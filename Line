@@ -1,0 +1,20 @@
+class Line(object):
+
+	#green line = number 1
+	#red line = number 2
+	#yellow line = number 3
+	stations = []
+	vertices = []
+	number = 0
+
+	def __init__(self, colour, number, numberOfStations, stations, vertices);
+		self.colour = colour
+		self.number = number
+		self.stations = stations
+		self.numberOfStations = stations.len()
+		self.vertices = vertices
+
+	def isStationOnLine(self, station):
+		return stations.contains(station)
+
+

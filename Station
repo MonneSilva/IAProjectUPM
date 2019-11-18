@@ -1,0 +1,14 @@
+class Station(object):
+
+	numberOfLines = 0
+	lines = [0, 0, 0]
+
+	def __init__(self, name, numberOfLines, lines):
+		self.name = name
+		self.numberOfLines = numberOfLines
+		self.lines = lines
+
+	def isInterchangeStation(self):
+		return numberOfLines > 1
+
+	
