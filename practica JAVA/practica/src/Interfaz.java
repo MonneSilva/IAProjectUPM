@@ -63,9 +63,9 @@ public class Interfaz extends EstacionesMonterrey{
 		Metro.setIconImage(new ImageIcon(getClass().getResource("/resources/FIM.gif")).getImage());
 
 		//leyenda
-		ImageIcon leyenda = new ImageIcon (getClass().getResource("/resources/Leyenda.png"));		
+		ImageIcon leyenda = new ImageIcon (getClass().getResource("/resources/bandera.jpg"));		
 		JLabel panelLeyenda = new JLabel(leyenda);
-		panelLeyenda.setBounds(15, 540, 707, 115);
+		panelLeyenda.setBounds(280, 540, 707, 115);
 		Metro.getContentPane().add(panelLeyenda);
 		panelLeyenda.setLayout(null);
 
@@ -75,12 +75,12 @@ public class Interfaz extends EstacionesMonterrey{
 		dibujo.setBackground(Color.BLACK);
 		dibujo.repaint(100, 100, 15, 15);
 		dibujo.setSize(707, 512);
-		dibujo.setLocation(15, 17);
+		dibujo.setLocation(280, 17);
 		Metro.getContentPane().add(dibujo);
 
 		//Origen
 		JPanel panelOrigen = new JPanel();
-		panelOrigen.setBounds(734, 15, 240, 30);
+		panelOrigen.setBounds(20, 15, 240, 30);
 		Metro.getContentPane().add(panelOrigen);
 		panelOrigen.setBackground(new Color(190,190,190));
 		panelOrigen.setLayout(null);
@@ -97,7 +97,7 @@ public class Interfaz extends EstacionesMonterrey{
 		//destino
 		JPanel panelDestino = new JPanel();
 		panelDestino.setLayout(null);
-		panelDestino.setBounds(734, 60, 240, 30);
+		panelDestino.setBounds(20, 60, 240, 30);
 		panelDestino.setBackground(new Color(190,190,190));
 		Metro.getContentPane().add(panelDestino);
 
@@ -112,7 +112,7 @@ public class Interfaz extends EstacionesMonterrey{
 
 		//Horas
 		JPanel panelHoras = new JPanel();
-		panelHoras.setBounds(734, 105, 240, 45);
+		panelHoras.setBounds(20, 105, 240, 45);
 		panelHoras.setBackground(new Color(190,190,190));
 		Metro.getContentPane().add(panelHoras);
 		panelHoras.setLayout(null);
@@ -131,7 +131,7 @@ public class Interfaz extends EstacionesMonterrey{
 
 		//Nº estaciones recorridas
 		JPanel panelRecorridas = new JPanel();
-		panelRecorridas.setBounds(734, 360, 240, 40);
+		panelRecorridas.setBounds(20, 360, 240, 40);
 		panelRecorridas.setBackground(new Color(190,190,190));
 		Metro.getContentPane().add(panelRecorridas);
 		panelRecorridas.setLayout(null);
@@ -146,7 +146,7 @@ public class Interfaz extends EstacionesMonterrey{
 
 		//Lista estaciones recorridas
 		JPanel panelListado = new JPanel();
-		panelListado.setBounds(734, 418, 240, 237);
+		panelListado.setBounds(20, 418, 240, 237);
 		Metro.getContentPane().add(panelListado);
 		panelListado.setLayout(null);
 		panelListado.setBackground(new Color(190,190,190));
@@ -163,7 +163,7 @@ public class Interfaz extends EstacionesMonterrey{
 
 		//distancia
 		JPanel panelDistancia = new JPanel();
-		panelDistancia.setBounds(734, 250, 240, 40);
+		panelDistancia.setBounds(20, 250, 240, 40);
 		Metro.getContentPane().add(panelDistancia);
 		panelDistancia.setLayout(null);
 		dist = new JTextField();
@@ -178,7 +178,7 @@ public class Interfaz extends EstacionesMonterrey{
 
 		//Duracion
 		JPanel panelDuracion = new JPanel();
-		panelDuracion.setBounds(734, 305, 240, 40);
+		panelDuracion.setBounds(20, 305, 240, 40);
 		Metro.getContentPane().add(panelDuracion);
 		panelDuracion.setLayout(null);
 		textField = new JTextField();
@@ -192,10 +192,11 @@ public class Interfaz extends EstacionesMonterrey{
 		panelDuracion.add(lblTiempoEstimadoEn);
 
 		JButton botonReset = new JButton("Nuevo calculo");
+		Metro.getContentPane().add(botonReset);
 		botonReset.setEnabled(false);
 		//boton calcular
 		JButton botonCalcular = new JButton("Calcular");
-		botonCalcular.setBounds(800, 165, 95, 30);
+		botonCalcular.setBounds(86, 165, 95, 30);
 		Metro.getContentPane().add(botonCalcular);
 		botonCalcular.addActionListener(new ActionListener() {
 			@SuppressWarnings("static-access")
@@ -220,7 +221,7 @@ public class Interfaz extends EstacionesMonterrey{
 				segundos=metro.getSegundos();
 				distancia=metro.getDistancia();
 				Graphics g = dibujo.getGraphics();
-				g.setColor(Color.RED);
+				g.setColor(Color.BLUE);
 				while(i<resultado.length){
 
 
@@ -361,7 +362,7 @@ public class Interfaz extends EstacionesMonterrey{
 
 			}
 		});
-		botonReset.setBounds(790, 210, 115, 30);
+		botonReset.setBounds(86, 210, 115, 30);
 		Metro.getContentPane().add(botonReset);
 	}
 	public static String distanciaRedondeada(double distancia) {
