@@ -3,30 +3,31 @@ import java.util.ArrayList;
 public class Station {
     
 	private String name;
-	private ArrayList<Station> nextStations;
-	private ArrayList<Station> prevStations;
+	private ArrayList<Station> nextStations, prevStations;
+        private ArrayList<Neighbour> neighbours= new ArrayList();
 	private boolean interchange;
 	private int interchangeTime;
 	private ArrayList<String> lines;
-	private double latitude;
-	private double longitude;
-	protected double g;
-	protected double h;
+	private double latitude,longitude,g,h;
 
 	@Override
 	public String toString() {
 		return name;
 	}
 
-	public Station(String name, ArrayList<Station> nextStations, ArrayList<Station> prevStations, 
-			ArrayList<String> lines, double lat, double longi) {
+	public Station(String name, ArrayList<Neighbour> neighbours,ArrayList<String> lines, double lat, double longi) {
 
 		this.name = name;
-		this.nextStations = nextStations;
-		this.prevStations = prevStations;
+		this.neighbours=neighbours;
 		this.interchange = (nextStations.size() >= 1);
 		this.interchangeTime = interchange? 5: 0;
 		this.lines = lines;
+		this.latitude=lat;
+		this.longitude=longi;
+	}
+        //Simplex delacaration of station
+        public Station(String name, double lat, double longi) {
+		this.name = name;
 		this.latitude=lat;
 		this.longitude=longi;
 	}
@@ -38,35 +39,35 @@ public class Station {
 	}
 
 	
-	public String getname(){
+	public String getName(){
 		return name;
 	}
 
-	public ArrayList<Station> getnextStation() {
+	public ArrayList<Station> getNextStation() {
 		return nextStations;
 	}
 
-	public ArrayList<Station> getprevStation() {
+	public ArrayList<Station> getPrevStation() {
 		return prevStations;
 	}
 
-	public boolean isinterchange() {
+	public boolean isInterchange() {
 		return interchange;
 	}
 
-	public int getinterchangeTime() {
+	public int getInterchangeTime() {
 		return interchangeTime;
 	}
 
-	public ArrayList<String> getlines() {
+	public ArrayList<String> getLines() {
 		return lines;
 	}
 
-	public double getlatitude(){
+	public double getLatitude(){
 		return latitude;
 	}
 
-	public double getlongitude(){
+	public double getLongitude(){
 		return longitude;
 	}
 
@@ -78,11 +79,14 @@ public class Station {
 		return h;
 	}
 
-	public void setG(double newG){
-		g=newG;
+	public void setG(double G){
+		g=G;
 	}
 
-	public void setH(double newH){
-		h=newH;
+	public void setH(double H){
+		h=H;
 	}
+        
+        
+  
 }

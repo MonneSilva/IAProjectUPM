@@ -1,3 +1,4 @@
+import java.awt.EventQueue;
 import java.util.*;
 
 public class StationsTokyo{
@@ -15,7 +16,7 @@ public class StationsTokyo{
     
     Station[] stations = {shinOkubo, takadanobaba, mejiro, ikebukuro, otsuka, sugamo, komagome, tabata, nishiNippori, nippori, 
             uguisudani, ueno, okachimachi, akihabara, kanda, tokyo, yurakucho, shimbashi, hamamatsucho, tamachi, shinagawa, osaki, 
-            gotanda, meguro, ebisu, shibuya, harajuku, yoyogi, shinjuku, ochanomizu, sendagaya, shinanomachi, yotsuya, ichigaya,
+            gotanda, merugo, ebisu, shibuya, harajuku, yoyogi, shinjuku, ochanomizu, sendagaya, shinanomachi, yotsuya,lichigaya,
             lidabashi, suidobashi};
     
     
@@ -23,11 +24,16 @@ public class StationsTokyo{
     
 	
     public void createStations() {
+        //WHY WE USE ARRAY TO THE NEXT STATIONS?
         
     //Green line (1)
     metroLines.add(green);
-	takadanobaba = new Station("Takadanobaba", mejiro.toArray(), shinOkubo.toArray(), metroLines, 35.712932, 139.704455);
-	mejiro = new Station("Mejiro", ikebukuro.toArray(), takadanobaba.toArray(), metroLines, 35.7211714, 139.7065603);
+    //ADD DISTANCE TO NEIGHBOUR STATIONS
+	takadanobaba = new Station("Takadanobaba",new ArrayList<Neighbour>(){{add(new Neighbour(mejiro,0));add(new Neighbour(shinOkubo,0));}}, metroLines, 35.712932, 139.704455);
+        mejiro = new Station("Mejiro",new ArrayList<Neighbour>(){{add(new Neighbour(ikebukuro,0));add(new Neighbour(takadanobaba,0));}}, metroLines, 35.7211714, 139.7065603);
+        ikebukuro = new Station("Mejiro",new ArrayList<Neighbour>(){{add(new Neighbour(ikebukuro,0));add(new Neighbour(takadanobaba,0));}}, metroLines, 35.7211714, 139.7065603);
+        
+ 
 	ikebukuro = new Station("Ikebukuro", otsuka.toArray(), mejiro.toArray(), metroLines, 35.7295028, 139.7109001);
 	otsuka = new Station("Otsuka", sugamo.toArray(), ikebukuro.toArray(), metroLines, 35.7318309,139.7281112);
 	sugamo = new Station("Sugamo", komagome.toArray(), otsuka.toArray(), metroLines,35.7334192,139.7392848);
@@ -45,7 +51,7 @@ public class StationsTokyo{
 	kanda = new Station("Kanda", tokyo.toArray(), okachimachi.toArray(), metroLines, 35.6918216,139.7709318);
 	metroLines.add(red);
 	changeNext(yurakucho, ochanomizu);
-	tokyo = new Station("Tokyo", next, kanda.toArray(), metroLines, 35,6812362, 139,7649308);
+	tokyo = new Station("Tokyo", next, kanda.toArray(), metroLines,35.6812362,139.7649308);
 	metroLines.remove(red);
 	yurakucho = new Station("Yurakucho", shimbashi.toArray(), tokyo.toArray(), metroLines, 35.6749187,139.7628199);
 	shimbashi = new Station("Shimbashi", hamamatsucho.toArray(), tokyo.toArray(), metroLines, 35.666379,139.7583398);
@@ -53,8 +59,8 @@ public class StationsTokyo{
     tamachi = new Station("Tamachi", shinagawa.toArray(), hamamatsucho.toArray(), metroLines, 35.6457361,139.7475624);
     shinagawa = new Station("Shinagawa", osaki.toArray(), tamachi.toArray(), metroLines, 35.6284713,139.7387597);
     osaki = new Station("Osaki", gotanda.toArray(), shinagawa.toArray(), metroLines, 35.6198513,139.7281892);
-    gotanda = new Station("Gotanda", meguro.toArray(), osaki.toArray(), metroLines, 35.6261591,139.7236022);
-    meguro = new Station("Meguro", ebisu.toArray(), gotanda.toArray(), metroLines, 35.6340929,139.7158331);
+    gotanda = new Station("Gotanda", merugo.toArray(), osaki.toArray(), metroLines, 35.6261591,139.7236022);
+    merugo = new Station("Meguro", ebisu.toArray(), gotanda.toArray(), metroLines, 35.6340929,139.7158331);
     ebisu = new Station("Ebisu", shibuya.toArray(), merugo.toArray(), metroLines, 35.6467139,139.7100777);
     shibuya = new Station("Shibuya", harajuku.toArray(), ebisu.toArray(), metroLines, 35.6580339,139.7016358);
     harajuku = new Station("Harajuku", yoyogi.toArray(), shibuya.toArray(), metroLines, 35.6702285,139.7026976);
@@ -75,7 +81,7 @@ public class StationsTokyo{
     sendagaya = new Station("Sendagaya", yoyogi.toArray(), shinanomachi.toArray(), metroLines, 35.6811956,139.7112808);
     shinanomachi = new Station("Shinanomachi", sendagaya.toArray(), yotsuya.toArray(), metroLines, 35.6800602,139.7203199);
     yotsuya = new Station("Yotsuya", shinanomachi.toArray(), lichigaya.toArray(), metroLines, 35.6861525,139.7302183);
-    Ichigaya = new Station("Ichigaya", yotsuya.toArray(), lidabashi.toArray(), metroLines, 35.6910121,139.7355674);
+    lichigaya = new Station("Ichigaya", yotsuya.toArray(), lidabashi.toArray(), metroLines, 35.6910121,139.7355674);
     lidabashi = new Station("Lidabashi", lichigaya.toArray(), suidobashi.toArray(), metroLines, 35.7020837,139.7450232);
     suidobashi = new Station("Suidobashi", lidabashi.toArray(), ochanomizu.toArray(), metroLines, 35.7020484,139.7535016);
     metroLines.add(red);
@@ -97,5 +103,10 @@ public class StationsTokyo{
         next.add(next1);
         next.add(next2);
     }
+    
+    public static void main(String[] args) {
+		StationsTokyo T=new StationsTokyo();
+                T.createStations();
+	}
 	
 }

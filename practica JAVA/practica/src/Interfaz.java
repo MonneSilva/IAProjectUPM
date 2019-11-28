@@ -129,7 +129,7 @@ public class Interfaz extends EstacionesMonterrey{
 		desplegableHora.setBounds(140, 0, 100, 30);
 		panelHoras.add(desplegableHora);
 
-		//Nº estaciones recorridas
+		//Nï¿½ estaciones recorridas
 		JPanel panelRecorridas = new JPanel();
 		panelRecorridas.setBounds(20, 360, 240, 40);
 		panelRecorridas.setBackground(new Color(190,190,190));
@@ -140,7 +140,7 @@ public class Interfaz extends EstacionesMonterrey{
 		estRec.setEditable(false);
 		panelRecorridas.add(estRec);
 
-		JLabel numEstRec = new JLabel("Número de estaciones recorridas:");
+		JLabel numEstRec = new JLabel("Nï¿½mero de estaciones recorridas:");
 		numEstRec.setBounds(0, 0, 197, 15);
 		panelRecorridas.add(numEstRec);
 
@@ -187,15 +187,15 @@ public class Interfaz extends EstacionesMonterrey{
 		panelDuracion.add(textField);
 		panelDuracion.setBackground(new Color(190,190,190));
 
-		JLabel lblTiempoEstimadoEn = new JLabel("Duración aproximada del viaje: ");
+		JLabel lblTiempoEstimadoEn = new JLabel("Duraciï¿½n aproximada del viaje: ");
 		lblTiempoEstimadoEn.setBounds(0, 0, 191, 15);
 		panelDuracion.add(lblTiempoEstimadoEn);
 
-		JButton botonReset = new JButton("Nuevo calculo");
+		final JButton botonReset = new JButton("Nuevo calculo");
 		Metro.getContentPane().add(botonReset);
 		botonReset.setEnabled(false);
 		//boton calcular
-		JButton botonCalcular = new JButton("Calcular");
+		final JButton botonCalcular = new JButton("Calcular");
 		botonCalcular.setBounds(86, 165, 95, 30);
 		Metro.getContentPane().add(botonCalcular);
 		botonCalcular.addActionListener(new ActionListener() {
@@ -237,25 +237,25 @@ public class Interfaz extends EstacionesMonterrey{
 							imp=imp+" -> "+resultado[i]+"\n";
 						if (i!=0 && i!=(resultado.length-1) && resultado[i-1].getLineas().length==1 && resultado[i+1].getLineas().length==1
 								&& !resultado[i-1].getLineas()[0].equals(resultado[i+1].getLineas()[0]))
-							imp=imp+"Transbordo con la línea "+resultado[i+1].getLineas()[0]+".\n";
+							imp=imp+"Transbordo con la lï¿½nea "+resultado[i+1].getLineas()[0]+".\n";
 					}
 
 					//Linea Amarilla
 					if(resultado[i]==Talleres){
 						g.fillRect(82, 42, 5, 5);}
-					if(resultado[i]==San_Bernabé){
+					if(resultado[i]==San_Bernabe){
 						g.fillRect(131, 91, 5, 5);}
 					if(resultado[i]==Unidad_Modelo){
 						g.fillRect(164, 124, 5, 5);}
-					if(resultado[i]==Aztlán){
+					if(resultado[i]==Aztlan){
 						g.fillRect(196, 156, 5, 5);}
-					if(resultado[i]==Penitenciaría){
+					if(resultado[i]==Penitenciaria){
 						g.fillRect(223, 191, 5, 5);}
 					if(resultado[i]==Alfonso_Reyes){
 						g.fillRect(223, 227, 5, 5);}
 					if(resultado[i]==Mitras){
 						g.fillRect(223, 260, 5, 5);}
-					if(resultado[i]==Simón_Bolívar){
+					if(resultado[i]==Simon_Bolivar){
 						g.fillRect(223, 298, 5, 5);}
 					if(resultado[i]==Hospital){
 						g.fillRect(223, 333, 5, 5);}
@@ -263,11 +263,11 @@ public class Interfaz extends EstacionesMonterrey{
 						g.fillRect(262, 346, 5, 5);}
 					if(resultado[i]==Central){
 						g.fillRect(306, 346, 5, 5);}
-					if(resultado[i]==Cuauhtémoc){
+					if(resultado[i]==Cuauhtemoc){
 						g.fillRect(358, 346, 5, 5);}
 					if(resultado[i]==Del_Golfo){
 						g.fillRect(410, 346, 5, 5);}
-					if(resultado[i]==Felix_U_Gómez){
+					if(resultado[i]==Felix_U_Gomez){
 						g.fillRect(458, 346, 5, 5);}
 					if(resultado[i]==Parque_Fundidora){
 						g.fillRect(506, 346, 5, 5);}
@@ -277,7 +277,7 @@ public class Interfaz extends EstacionesMonterrey{
 						g.fillRect(595, 357, 5, 5);}
 					if(resultado[i]==Lerdo_de_Tejada){
 						g.fillRect(638, 357, 5, 5);}
-					if(resultado[i]==Exposición){
+					if(resultado[i]==Exposicion){
 						g.fillRect(680, 357, 5, 5);}
 
 					//Linea Verde
@@ -285,13 +285,13 @@ public class Interfaz extends EstacionesMonterrey{
 						g.fillRect(374, 4, 5, 5);}
 					if(resultado[i]==Santiago_Tapia){
 						g.fillRect(374, 43, 5, 5);}
-					if(resultado[i]==San_Nicolás){
+					if(resultado[i]==San_Nicolas){
 						g.fillRect(374, 80, 5, 5);}
-					if(resultado[i]==Anáhuac){
+					if(resultado[i]==Anahuac){
 						g.fillRect(374, 120, 5, 5);}
 					if(resultado[i]==Universidad){
 						g.fillRect(374, 179, 5, 5);}
-					if(resultado[i]==Niños_Héroes){
+					if(resultado[i]==Ninos_Heroes){
 						g.fillRect(374, 213, 5, 5);}  
 					if(resultado[i]==Regina){
 						g.fillRect(358, 250, 5, 5);}  
@@ -310,9 +310,9 @@ public class Interfaz extends EstacionesMonterrey{
 					//Linea Rosa
 					if(resultado[i]==Hospital_Metropolitano){
 						g.fillRect(569, 141, 5, 5);}
-					if(resultado[i]==Los_Ángeles){
+					if(resultado[i]==Los_angeles){
 						g.fillRect(538, 172, 5, 5);}
-					if(resultado[i]==Ruíz_Cortines){
+					if(resultado[i]==Ruiz_Cortines){
 						g.fillRect(505, 205, 5, 5);}
 					if(resultado[i]==Violeta){
 						g.fillRect(470, 240, 5, 5);}
@@ -372,6 +372,6 @@ public class Interfaz extends EstacionesMonterrey{
 		resultado=(resultado-parteEntera)*Math.pow(10, 2);
 		resultado=Math.round(resultado);
 		//resultado=(resultado/Math.pow(10, 2))+parteEntera;
-		return (int)parteEntera+" kilómetros "+(int)((resultado/Math.pow(10, 2))*1000)+" metros ";
+		return (int)parteEntera+" kilï¿½metros "+(int)((resultado/Math.pow(10, 2))*1000)+" metros ";
 	}
 }

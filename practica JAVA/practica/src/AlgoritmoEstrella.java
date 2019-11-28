@@ -1,11 +1,7 @@
 public class AlgoritmoEstrella extends EstacionesMonterrey{
 
-	AlgoritmoEstrella()
-	{
-
-	}
-	private static AtributosEstacion[] ListaAbierta= new AtributosEstacion[38];
-	private static AtributosEstacion[] ListaCerrada= new AtributosEstacion[38];
+	private static AtributosEstacion[] ListaAbierta= new AtributosEstacion[38]; //Its better use an Array List
+	private static AtributosEstacion[] ListaCerrada= new AtributosEstacion[38]; //Its better use an Array List
 	public static int posSigElemLA = 0;
 	public static int posSigElemLC = 0;
 	public static int posFinCamino = 0;
@@ -22,38 +18,46 @@ public class AlgoritmoEstrella extends EstacionesMonterrey{
 		AtributosEstacion antDesarrollada=salida;
 		modo=modos;
 		salida.setG(0);
-		salida.setH(calcularDistancia(salida,meta));
+		salida.setH(calculateH(salida,meta));
 
 		ListaAbierta[0]=salida;
 		actual=ListaAbierta[posSigElemLA];
 		posSigElemLA++;
 
 		while(!metaEnListaCerrada && ListaAbierta[0]!=null){
-			if(actual==Cuauhtémoc || actual==Felix_U_Gómez || actual== General_I_Zaragoza){
+                    //If the actual station is a intersection is going to be used "desarrollarConDosLinea"
+			if(actual==Cuauhtemoc || actual==Felix_U_Gomez || actual== General_I_Zaragoza){
 				desarrollarConDosLinea(actual,antDesarrollada,meta);
 			}else{
+                     //If the actual station is a intersection isnt going to be used "desarrollarConUnaLinea"
 				desarrollarConUnaLinea(actual,antDesarrollada,meta);
 			}
 
 			ListaCerrada[posSigElemLC]=actual;
 			posSigElemLC++;
+                     //If the last element on close list is our final station
 			if(ListaCerrada[posSigElemLC-1].getNombre()==meta.getNombre()){
 				metaEnListaCerrada=true;
 			}
+                        
 			antDesarrollada=actual;
 			quitarListaAbierta(actual);
+                        
 			if(ListaAbierta[0]!=null)actual=siguienteEstacion();
 		}
 
 		AtributosEstacion[] trayecto=hallarTrayecto(salida,meta);
+                
 		AtributosEstacion siguiente = null;
+                
 		if(posFinCamino>1)siguiente= trayecto[posFinCamino-2];
+                
 		AtributosEstacion[] respuesta = recorrerTrayecto(salida,siguiente,trayecto);
 
 		return respuesta;
 	}
 
-	private static double calcularDistancia (AtributosEstacion punto1,AtributosEstacion punto2){
+	private static double calculateH (AtributosEstacion punto1,AtributosEstacion punto2){
 		double R = 6378137;
 		double distanciaLat = ((punto2.getLatitud()-punto1.getLatitud())*Math.PI/180);
 		double distanciaLong = ((punto2.getLongitud()-punto1.getLongitud())*Math.PI/180);
@@ -63,11 +67,11 @@ public class AlgoritmoEstrella extends EstacionesMonterrey{
 		return d;
 	}
 
-	private static double calcularG( AtributosEstacion anterior2,AtributosEstacion anterior,AtributosEstacion parada){
+	private static double calculateG( AtributosEstacion anterior2,AtributosEstacion anterior,AtributosEstacion parada){
 		int penalizacion=0;
 		if(modo == 2 && anterior.isTransbordo() && anterior2.getLineas()[0]!=parada.getLineas()[0] )
 			penalizacion=10000;
-		return anterior.getG()+calcularDistancia(anterior,parada)+penalizacion;
+		return anterior.getG()+calculateH(anterior,parada)+penalizacion;
 	}
 
 	private static AtributosEstacion siguienteEstacion(){
@@ -114,10 +118,10 @@ public class AlgoritmoEstrella extends EstacionesMonterrey{
 		res[0]=meta;
 		while(actual.getNombre()!=salida.getNombre()){
 
-			if(actual.getNombre()==Cuauhtémoc.getNombre()){
+			if(actual.getNombre()==Cuauhtemoc.getNombre()){
 				caso=3;
 				caso2=0;
-			}else if(actual.getNombre()==Felix_U_Gómez.getNombre()){
+			}else if(actual.getNombre()==Felix_U_Gomez.getNombre()){
 				caso=3;
 				caso2=1;
 			}else if(actual.getNombre()==General_I_Zaragoza.getNombre()){
@@ -129,7 +133,7 @@ public class AlgoritmoEstrella extends EstacionesMonterrey{
 			case 3://transbordos
 				boolean hayPredecesor2 = false;
 				AtributosEstacion auxiliar2=null;
-				//Cuauhtémoc
+				//Cuauhtï¿½moc
 				if(caso2==0){
 					for(int i=0; i<posSigElemLC;i++){
 						if(Central.getNombre()==ListaCerrada[i].getNombre() 
@@ -175,7 +179,7 @@ public class AlgoritmoEstrella extends EstacionesMonterrey{
 					actual=auxiliar2;
 					aux++;
 				}
-				//Felix_U_Gómez
+				//Felix_U_Gï¿½mez
 				if(caso2==1){
 					for(int i=0; i<posSigElemLC;i++){
 						if(Del_Golfo.getNombre()==ListaCerrada[i].getNombre() 
@@ -281,8 +285,8 @@ public class AlgoritmoEstrella extends EstacionesMonterrey{
 		int j=0;
 		while(!encontrado && actual.getSigEstacion()[0]!=null && j<Paradas.length){			
 			if(actual.getSigEstacion()[0]==Paradas[j].getNombre() && !enListaCerrada(Paradas[j]) && !enListaAbierta(Paradas[j])){
-				Paradas[j].setG(calcularG(antDesarrollada,actual,Paradas[j]));
-				Paradas[j].setH(calcularDistancia(Paradas[j],meta));
+				Paradas[j].setG(calculateG(antDesarrollada,actual,Paradas[j]));
+				Paradas[j].setH(calculateH(Paradas[j],meta));
 				ListaAbierta[posSigElemLA]=Paradas[j];
 				posSigElemLA++;
 				encontrado=true;
@@ -293,8 +297,8 @@ public class AlgoritmoEstrella extends EstacionesMonterrey{
 		j=0;
 		while(!encontrado && actual.getAntEstacion()[0]!=null && j<Paradas.length){
 			if(actual.getAntEstacion()[0]==Paradas[j].getNombre() && !enListaCerrada(Paradas[j]) && !enListaAbierta(Paradas[j])){
-				Paradas[j].setG(calcularG(antDesarrollada,actual,Paradas[j]));
-				Paradas[j].setH(calcularDistancia(Paradas[j],meta));
+				Paradas[j].setG(calculateG(antDesarrollada,actual,Paradas[j]));
+				Paradas[j].setH(calculateH(Paradas[j],meta));
 				ListaAbierta[posSigElemLA]=Paradas[j];
 				posSigElemLA++;
 				encontrado=true;
@@ -306,73 +310,73 @@ public class AlgoritmoEstrella extends EstacionesMonterrey{
 	private static void desarrollarConDosLinea(AtributosEstacion actual, AtributosEstacion antDesarrollada, AtributosEstacion meta){
 		int caso=0;
 
-		if(actual.getNombre()==Cuauhtémoc.getNombre()) caso=1;
-		else if(actual.getNombre()== Felix_U_Gómez.getNombre()) caso=2;
+		if(actual.getNombre()==Cuauhtemoc.getNombre()) caso=1;
+		else if(actual.getNombre()== Felix_U_Gomez.getNombre()) caso=2;
 		else if(actual.getNombre()== General_I_Zaragoza.getNombre()) caso=3;
 
 		switch(caso){
-		case 1://Cuauhtémoc
+		case 1://Cuauhtï¿½moc
 			if(!enListaCerrada(Central) && !enListaAbierta(Central)){
-				Central.setG(calcularG(antDesarrollada,Cuauhtémoc,Central));
-				Central.setH(calcularDistancia(Central,meta));
+				Central.setG(calculateG(antDesarrollada,Cuauhtemoc,Central));
+				Central.setH(calculateH(Central,meta));
 				ListaAbierta[posSigElemLA]=Central;
 				posSigElemLA++;
 			}
 			if(!enListaCerrada(Del_Golfo) && !enListaAbierta(Del_Golfo)){
-				Del_Golfo.setG(calcularG(antDesarrollada,Cuauhtémoc,Del_Golfo));
-				Del_Golfo.setH(calcularDistancia(Del_Golfo,meta));
+				Del_Golfo.setG(calculateG(antDesarrollada,Cuauhtemoc,Del_Golfo));
+				Del_Golfo.setH(calculateH(Del_Golfo,meta));
 				ListaAbierta[posSigElemLA]=Del_Golfo;
 				posSigElemLA++;
 			}
 			if(!enListaCerrada(General_Anaya) && !enListaAbierta(General_Anaya)){
-				General_Anaya.setG(calcularG(antDesarrollada,Cuauhtémoc,General_Anaya));
-				General_Anaya.setH(calcularDistancia(General_Anaya,meta));
+				General_Anaya.setG(calculateG(antDesarrollada,Cuauhtemoc,General_Anaya));
+				General_Anaya.setH(calculateH(General_Anaya,meta));
 				ListaAbierta[posSigElemLA]=General_Anaya;
 				posSigElemLA++;
 			}
 			if(!enListaCerrada(Alameda) && !enListaAbierta(Alameda)){
-				Alameda.setG(calcularG(antDesarrollada,Cuauhtémoc,Alameda));
-				Alameda.setH(calcularDistancia(Alameda,meta));
+				Alameda.setG(calculateG(antDesarrollada,Cuauhtemoc,Alameda));
+				Alameda.setH(calculateH(Alameda,meta));
 				ListaAbierta[posSigElemLA]=Alameda;
 				posSigElemLA++;
 			}
 			break;
-		case 2://Felix_U_Gómez
+		case 2://Felix_U_Gï¿½mez
 			if(!enListaCerrada(Del_Golfo) && !enListaAbierta(Del_Golfo)){
-				Del_Golfo.setG(calcularG(antDesarrollada,Felix_U_Gómez,Del_Golfo));
-				Del_Golfo.setH(calcularDistancia(Del_Golfo,meta));
+				Del_Golfo.setG(calculateG(antDesarrollada,Felix_U_Gomez,Del_Golfo));
+				Del_Golfo.setH(calculateH(Del_Golfo,meta));
 				ListaAbierta[posSigElemLA]=Del_Golfo;
 				posSigElemLA++;
 			}
 			if(!enListaCerrada(Parque_Fundidora) && !enListaAbierta(Parque_Fundidora)){
-				Parque_Fundidora.setG(calcularG(antDesarrollada,Felix_U_Gómez,Parque_Fundidora));
-				Parque_Fundidora.setH(calcularDistancia(Parque_Fundidora,meta));
+				Parque_Fundidora.setG(calculateG(antDesarrollada,Felix_U_Gomez,Parque_Fundidora));
+				Parque_Fundidora.setH(calculateH(Parque_Fundidora,meta));
 				ListaAbierta[posSigElemLA]=Parque_Fundidora;
 				posSigElemLA++;
 			}
 			if(!enListaCerrada(Conchello) && !enListaAbierta(Conchello)){
-				Conchello.setG(calcularG(antDesarrollada,Felix_U_Gómez,Conchello));
-				Conchello.setH(calcularDistancia(Conchello,meta));
+				Conchello.setG(calculateG(antDesarrollada,Felix_U_Gomez,Conchello));
+				Conchello.setH(calculateH(Conchello,meta));
 				ListaAbierta[posSigElemLA]=Conchello;
 				posSigElemLA++;
 			}
 			if(!enListaCerrada(Adolfo_Prieto) && !enListaAbierta(Adolfo_Prieto)){
-				Adolfo_Prieto.setG(calcularG(antDesarrollada,Felix_U_Gómez,Adolfo_Prieto));
-				Adolfo_Prieto.setH(calcularDistancia(Adolfo_Prieto,meta));
+				Adolfo_Prieto.setG(calculateG(antDesarrollada,Felix_U_Gomez,Adolfo_Prieto));
+				Adolfo_Prieto.setH(calculateH(Adolfo_Prieto,meta));
 				ListaAbierta[posSigElemLA]=Adolfo_Prieto;
 				posSigElemLA++;
 			}
 			break;
 		case 3://General_I_Zaragoza
 			if(!enListaCerrada(Padre_Mier) && !enListaAbierta(Padre_Mier)){
-				Padre_Mier.setG(calcularG(antDesarrollada,General_I_Zaragoza,Padre_Mier));
-				Padre_Mier.setH(calcularDistancia(Padre_Mier,meta));
+				Padre_Mier.setG(calculateG(antDesarrollada,General_I_Zaragoza,Padre_Mier));
+				Padre_Mier.setH(calculateH(Padre_Mier,meta));
 				ListaAbierta[posSigElemLA]=Padre_Mier;
 				posSigElemLA++;
 			}
 			if(!enListaCerrada(Santa_Lucia) && !enListaAbierta(Santa_Lucia)){
-				Santa_Lucia.setG(calcularG(antDesarrollada,General_I_Zaragoza,Santa_Lucia));
-				Santa_Lucia.setH(calcularDistancia(Santa_Lucia,meta));
+				Santa_Lucia.setG(calculateG(antDesarrollada,General_I_Zaragoza,Santa_Lucia));
+				Santa_Lucia.setH(calculateH(Santa_Lucia,meta));
 				ListaAbierta[posSigElemLA]=Santa_Lucia;
 				posSigElemLA++;
 			}
@@ -435,7 +439,7 @@ public class AlgoritmoEstrella extends EstacionesMonterrey{
 			}
 		}
 		for(int i =0;i<respuesta.length-1;i++){
-			d = d + calcularDistancia(respuesta[i], respuesta[i+1]);
+			d = d + calculateH(respuesta[i], respuesta[i+1]);
 		}
 
 		if(d!=0)
