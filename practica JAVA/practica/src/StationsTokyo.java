@@ -24,13 +24,37 @@ public class StationsTokyo{
 	
     public void createStations() {
         
+ 
+    
+    
+    //IF WE ARE GOING TO USE THIS FLOW OF CREATION, WE HAVE TO :
+    //  - CREATE ALL THE STATION FIRST AND THEN ADD THE NEIGHBOURS 
+    
+        takadanobaba = new Station("Takadanobaba",35.712932, 139.704455);
+        mejiro = new Station("Mejiro",35.7211714, 139.7065603);
+        ikebukuro = new Station("Ikebukuro",35.7295028, 139.7109001);
+        
+ //ADD DISTANCE TO NEIGHBOUR STATIONS
     //Green line (1)
+<<<<<<< Updated upstream
     metroLines.add(green);
 	takadanobaba = new Station("Takadanobaba", mejiro.toArray(), shinOkubo.toArray(), metroLines, 35.712932, 139.704455);
 	mejiro = new Station("Mejiro", ikebukuro.toArray(), takadanobaba.toArray(), metroLines, 35.7211714, 139.7065603);
 	ikebukuro = new Station("Ikebukuro", otsuka.toArray(), mejiro.toArray(), metroLines, 35.7295028, 139.7109001);
 	otsuka = new Station("Otsuka", sugamo.toArray(), ikebukuro.toArray(), metroLines, 35.7318309,139.7281112);
 	sugamo = new Station("Sugamo", komagome.toArray(), otsuka.toArray(), metroLines,35.7334192,139.7392848);
+=======
+ metroLines.add(green);
+	takadanobaba.relations(new ArrayList<Neighbour>(){{add(new Neighbour(mejiro,0));add(new Neighbour(shinOkubo,0));}}, metroLines); 
+        
+        mejiro.relations(new ArrayList<Neighbour>(){{add(new Neighbour(ikebukuro,0));add(new Neighbour(takadanobaba,0));}}, metroLines);
+        
+        ikebukuro.relations(new ArrayList<Neighbour>(){{add(new Neighbour(otsuka,0));add(new Neighbour(mejiro,0));}}, metroLines);
+        
+        otsuka.relations(new ArrayList<Neighbour>(){{add(new Neighbour(sugamo,0));add(new Neighbour(ikebukuro,0));}}, metroLines); 
+        
+        /*sugamo = new Station("Sugamo", komagome.toArray(), otsuka.toArray(), metroLines,35.7334192,139.7392848);
+>>>>>>> Stashed changes
 	komagome = new Station("Komagome", tabata.toArray(), sugamo.toArray(), metroLines, 35.7365665, 139.7470098);
 	tabata = new Station("Tabata", nishiNippori.toArray(), komagome.toArray(), metroLines, 35.7381581,139.7608154);
 	nishiNippori = new Station("Nishi-Nippori", nippori.toArray(), tabata.toArray(), metroLines, 35.7320057, 139.7668856);
@@ -82,7 +106,7 @@ public class StationsTokyo{
     changeNext(suidobashi, shinjuku);
     changePrev(tokyo, akihabara);
     ochanomizu = new Station("Ochanomizu", next, prev, metroLines, 35.6993854,139.7652479);
-	
+	*/
 	
     } 
     

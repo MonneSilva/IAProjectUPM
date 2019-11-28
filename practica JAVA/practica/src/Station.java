@@ -8,15 +8,52 @@ public class Station {
 	private boolean interchange;
 	private int interchangeTime;
 	private ArrayList<String> lines;
+<<<<<<< Updated upstream
 	private double latitude;
 	private double longitude;
 	protected double g;
 	protected double h;
+=======
+	private double latitude,longitude,g,h,grapx,grapy;
+
+    public ArrayList<Station> getPrevStations() {
+        return prevStations;
+    }
+
+    public void setPrevStations(ArrayList<Station> prevStations) {
+        this.prevStations = prevStations;
+    }
+
+    public ArrayList<Neighbour> getNeighbours() {
+        return neighbours;
+    }
+
+    public void setNeighbours(ArrayList<Neighbour> neighbours) {
+        this.neighbours = neighbours;
+    }
+
+    public double getGrapx() {
+        return grapx;
+    }
+
+    public void setGrapx(double grapx) {
+        this.grapx = grapx;
+    }
+
+    public double getGrapy() {
+        return grapy;
+    }
+
+    public void setGrapy(double grapy) {
+        this.grapy = grapy;
+    }
+>>>>>>> Stashed changes
 
 	@Override
 	public String toString() {
 		return name;
 	}
+<<<<<<< Updated upstream
 
 	public Station(String name, ArrayList<Station> nextStations, ArrayList<Station> prevStations, 
 			ArrayList<String> lines, double lat, double longi) {
@@ -25,6 +62,20 @@ public class Station {
 		this.nextStations = nextStations;
 		this.prevStations = prevStations;
 		this.interchange = (nextStations.size() >= 1);
+=======
+        
+        public void relations(ArrayList<Neighbour> neighbours,ArrayList<String> lines)
+        {
+            this.neighbours=neighbours;
+            this.lines=lines; 
+        }
+        
+	public Station(String name, ArrayList<Neighbour> neighbours,ArrayList<String> lines, double lat, double longi) {
+
+		this.name = name;
+		this.neighbours=neighbours;
+		this.interchange = (neighbours.size() >= 1);
+>>>>>>> Stashed changes
 		this.interchangeTime = interchange? 5: 0;
 		this.lines = lines;
 		this.latitude=lat;
