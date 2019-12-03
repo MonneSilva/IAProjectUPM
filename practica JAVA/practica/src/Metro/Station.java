@@ -24,13 +24,17 @@ public class Station {
         return this.getName(); //To change body of generated methods, choose Tools | Templates.
     }
 	private double latitude,longitude;
+	private double graphx, graphy;
                        
-	public Station(String name,ArrayList<String> lines, double lat, double longi) {
+	public Station(String name,ArrayList<String> lines, double lat, double longi, double x, double y) {
 
 		this.name = name;
 		this.lines = lines;
 		this.latitude=lat;
 		this.longitude=longi;
+		this.graphx = x;
+		this.graphy = y;
+
 	}
         //Simplex delacaration of station
         public Station(String name, double lat, double longi,ArrayList<String> lines) {
@@ -75,7 +79,13 @@ public class Station {
 		return longitude;
 	}
      
-        
+    public double getX(){
+		return graphx;
+	}    
+
+	public double getY(){
+		return graphy;
+	}
   
 }
 

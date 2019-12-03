@@ -1,6 +1,11 @@
 import java.awt.EventQueue;
 import java.util.*;
 
+public class Neighbour {
+    Station station;
+    double distancia;
+}
+
 public class StationsTokyo{
 
     ArrayList<String> metroLines = new ArrayList<String>();
@@ -119,3 +124,4 @@ public class StationsTokyo{
 	}
 	
 }
+
