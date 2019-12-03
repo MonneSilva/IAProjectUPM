@@ -26,22 +26,14 @@ public class Station {
 	private double latitude,longitude;
 	private double graphx, graphy;
                        
-	public Station(String name,ArrayList<String> lines, double lat, double longi, double x, double y) {
-
+    //Simplex delacaration of station
+    public Station(String name, double lat, double longi,ArrayList<String> lines, double x, double y) {
 		this.name = name;
-		this.lines = lines;
 		this.latitude=lat;
 		this.longitude=longi;
+		this.lines=lines;
 		this.graphx = x;
 		this.graphy = y;
-
-	}
-        //Simplex delacaration of station
-        public Station(String name, double lat, double longi,ArrayList<String> lines) {
-		this.name = name;
-		this.latitude=lat;
-		this.longitude=longi;
-                this.lines=lines;
 	}
          public Station(String name, double lat, double longi,String line) {
 		this.name = name;
