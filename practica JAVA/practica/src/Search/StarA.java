@@ -27,10 +27,9 @@ public class StarA {
      * @param goal
      * @return
      */
-    public static LinkedList <Node> Search(Node start, Node goal) {
+    public static Stack<Node> Search(Node start, Node goal) {
 
-        ArrayList<Node> openList = new ArrayList();
-        // Map<Node,double> openList= new Map()<Node,>;
+        List<Node> openList = new ArrayList();
         List<Node> closeList = new ArrayList();
         Node current = start;
         current.setG(0);
@@ -43,12 +42,8 @@ public class StarA {
         while (!current.getStation().equals(goal.getStation())) {
             // iterate through the neighbors of the current node.
             for (Edge e : current.getEdges()) {
-                Node neighbor;
-                if (e.getNodes()[0].equals(current)) {
-                    neighbor = e.getNodes()[1];
-                } else {
-                    neighbor = e.getNodes()[0];
-                }
+                Node neighbor = e.getDestination(current);
+
                 // if this neighbor is already on closeList, ignore it.
                 if (!closeList.contains(neighbor)) {
                     // if this neighbor is already on openList, check if could have a better cost.
@@ -58,54 +53,38 @@ public class StarA {
                             current.setG(g);
                             neighbor.currentE = e;
                         }
-                        
                     } else {
                         neighbor.setH(calculateH(current, goal));
-                        int i;
-                        ////
                         neighbor.setG(current.getG() + e.getDistance());//LAST DISTANCE ROUTED + DISTANCE OF LAST NODE TO CURRENT
-                      
                         neighbor.currentE = e;
                         openList.add(neighbor);
-
                     }
                 }
-
             }
-
-         
-           order(openList);
-           closeList.add(current = openList.get(0));
-           openList.remove(0);
+            order(openList);
+            closeList.add(current = openList.get(0));
+            openList.remove(0);
 
         }
-        LinkedList <Node> CL=new LinkedList();
+        Stack<Node> CL = new Stack();
         Node N = closeList.get(closeList.size() - 1);
-
-        while(N.currentE!=null){
+        while (N.currentE != null) {
             CL.add(N);
-            System.out.println(N.getStation().getName() + " : " + N.getCost());
-            if (N.currentE.getNodes()[0].equals(N)) {
-                N = N.currentE.getNodes()[1];
-            } else {
-                N = N.currentE.getNodes()[0];
-            }
+            N = N.currentE.getDestination(N);
         }
-            CL.add(N);
-        System.out.println(N.getStation().getName() + " : " + N.getCost());
-         return CL;               
+        CL.push(N);
+        return CL;
     }
-    public static void order(ArrayList<Node> List)
-    {
+
+    public static void order(List<Node> List) {
         Collections.sort(List, new Comparator<Node>() {
-    
             @Override
             public int compare(Node N1, Node N2) {
-            return Double.compare(N1.getCost(), N2.getCost());
+                return Double.compare(N1.getCost(), N2.getCost());
+            }
+        });
     }
-        });}
-        
-    
+
     public static double calculateH(Node Actual, Node Goal) {
         double R = 6378137;
         double distanciaLat = ((Goal.getStation().getLatitude() - Actual.getStation().getLatitude()) * Math.PI / 180);
@@ -113,6 +92,6 @@ public class StarA {
         double a = Math.pow(Math.sin(distanciaLat / 2), 2) + Math.cos(Actual.getStation().getLatitude() * Math.PI / 180) * Math.cos(Goal.getStation().getLatitude() * Math.PI / 180) * Math.pow(Math.sin(distanciaLong / 2), 2);
         double c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
         double d = R * c;
-        return d/1000;
+        return d / 1000;
     }
 }

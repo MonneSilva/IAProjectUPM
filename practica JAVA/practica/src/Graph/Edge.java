@@ -10,27 +10,14 @@ package Graph;
  * @author monts
  */
 public class Edge {
-    private Node nodes[]= new Node[2];
-   
+    private Node nodes[] = new Node[2];
     private double distance;
-    private boolean interchange;
- 
+
     public Edge(Node origin, Node destination, double distance) {
-        this.nodes = new Node[]{origin,destination};
-       
+        this.nodes = new Node[]{origin, destination};
         this.distance = distance;
-        this.interchange=false;
     }
-
-
-    public boolean isInterchange() {
-        return interchange;
-    }
-
-    public void setInterchange(boolean interchange) {
-        this.interchange = interchange;
-    }
-
+   
     public Node[] getNodes() {
         return nodes;
     }
@@ -38,19 +25,21 @@ public class Edge {
     public void setNodes(Node[] nodes) {
         this.nodes = nodes;
     }
- 
-  
- 
+
+    public Node getDestination( Node Node) {
+        if (this.getNodes()[0].equals(Node)) {
+            return this.getNodes()[1];
+        }
+        return this.getNodes()[0];
+
+    }
+
     public double getDistance() {
         return distance;
     }
- 
+
     public void setDistance(double distance) {
         this.distance = distance;
     }
- 
 
- 
- 
- 
 }

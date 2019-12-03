@@ -1,4 +1,4 @@
-
+package Interface;
 import Graph.Node;
 import Metro.Metro;
 import Search.StarA;
@@ -16,16 +16,16 @@ import java.awt.Font;
 import javax.swing.JScrollPane;
 import java.awt.Color;
 import java.awt.Graphics;
-import java.util.LinkedList;
+import java.util.Stack;
 import javax.swing.JTextField;
 
-public class Interfaz extends EstacionesMonterrey {
+public class Interface extends Metro{
 
     private Metro metro = new Metro();
     private JFrame Metro;
     public String stationF;
     public String stationT;
-    public LinkedList<Node> resultado;
+    public Stack<Node> resultado;
     public JTextArea textArea;
     public String imp = "";
     public JPanel dibujo, dibujo2;
@@ -42,7 +42,7 @@ public class Interfaz extends EstacionesMonterrey {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    Interfaz window = new Interfaz();
+                    Interface window = new Interface();
                     window.Metro.setVisible(true);
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -51,14 +51,13 @@ public class Interfaz extends EstacionesMonterrey {
         });
     }
 
-    public Interfaz() {
+    public Interface() {
         initialize();
     }
 
     private void initialize() {
         //marco
         Metro = new JFrame();
-
         Metro.setTitle("Tokyo RP Metro");
         metro.createStations();
         metro.createGraph();
@@ -68,16 +67,16 @@ public class Interfaz extends EstacionesMonterrey {
         Metro.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         Metro.getContentPane().setLayout(null);
         Metro.setResizable(false);
-        Metro.setIconImage(new ImageIcon(getClass().getResource("/resources/FIM.gif")).getImage());
+        Metro.setIconImage(new ImageIcon(getClass().getResource("../resources/FIM.gif")).getImage());
 
-        ImageIcon leyenda = new ImageIcon(getClass().getResource("/resources/bandera.jpg"));
+        ImageIcon leyenda = new ImageIcon(getClass().getResource("../resources/bandera.jpg"));
         JLabel panelLeyenda = new JLabel(leyenda);
         panelLeyenda.setBounds(280, 540, 707, 115);
         Metro.getContentPane().add(panelLeyenda);
         panelLeyenda.setLayout(null);
 
         //MAP
-        dibujo = new ImagenMapa();
+        dibujo = new Map();
         dibujo.setBackground(Color.BLACK);
         dibujo.repaint(100, 100, 15, 15);
         dibujo.setSize(707, 512);
@@ -111,6 +110,7 @@ public class Interfaz extends EstacionesMonterrey {
         Metro T = new Metro();
         /* T.createStations();
         T.createGraph();
+        
         StarA A = new StarA();
         A.starASearch(T.getMetro().getNode(T.ueno), T.getMetro().getNode(T.suidobashi));*/
 
@@ -219,18 +219,17 @@ public class Interfaz extends EstacionesMonterrey {
                 resultado = StarA.Search(metro.getMetro().getNode(stationF), metro.getMetro().getNode(stationT));
                 Graphics g = dibujo.getGraphics();
                 g.setColor(Color.BLUE);
-                Node lastN = null;
-
-                for (Node N : resultado) {
+                Node N,lastN = null;
+                int j=resultado.size();
+                for (int i=0;i<j;i++) {
+                    N=resultado.pop();
                     if (lastN != null) {
                         if (lastN.getStation().equals(N.getStation())) {
                             imp += "intercambio" + "\n";
                         }
-                    }
-                                
+                    }            
                     imp += N.getStation().getName() + "\n";
                         lastN = N;
-                    
                 }
                
                 //FUNCTION TO FILL THE PIXEL

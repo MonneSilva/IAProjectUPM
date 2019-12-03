@@ -70,7 +70,7 @@ public class Metro {
         merugo = new Station("Meguro", 35.6340929, 139.7158331, line);
         ebisu = new Station("Ebisu", 35.6467139, 139.7100777, line);
         shibuya = new Station("Shibuya", 35.6580339, 139.7016358, line);
-        harajuku = new Station("Harajuku", 35.6702285, 139.7026976, line);
+        harajuku = new Station("Hara+++juku", 35.6702285, 139.7026976, line);
         yoyogi = new Station("Yoyogi", 35.683033, 139.7020555, line);
         shinjuku = new Station("Shinjuku", 35.6896067, 139.7005713, line);
         shinOkubo = new Station("Shin-Okubo", 35.7012459, 139.7002258, line);
