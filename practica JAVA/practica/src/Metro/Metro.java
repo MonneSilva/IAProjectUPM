@@ -77,17 +77,17 @@ public class Metro {
 //YELLOW LINE
         shinjuku.addLine(line = "yellow");
         yoyogi.addLine(line);
-        sendagaya = new Station("Sendagaya", 35.6811956, 139.7112808, line);
-        shinanomachi = new Station("Shinanomachi", 35.6800602, 139.7203199, line);
-        yotsuya = new Station("Yotsuya", 35.6861525, 139.7302183, line);
-        iichigaya = new Station("Ichigaya", 35.6910121, 139.7355674, line);
-        iidabashi = new Station("Lidabashi", 35.7020837, 139.7450232, line);
-        suidobashi = new Station("Suidobashi", 35.7020484, 139.7535016, line);
+        sendagaya = new Station("Sendagaya", 35.6811956, 139.7112808, line, 197, 344 );
+        shinanomachi = new Station("Shinanomachi", 35.6800602, 139.7203199, line, 237, 344);
+        yotsuya = new Station("Yotsuya", 35.6861525, 139.7302183, line, 260, 324);
+        iichigaya = new Station("Ichigaya", 35.6910121, 139.7355674, line, 275, 308);
+        iidabashi = new Station("Lidabashi", 35.7020837, 139.7450232, line, 291, 292);
+        suidobashi = new Station("Suidobashi", 35.7020484, 139.7535016, line, 307, 277);
         akihabara.addLine(line);
 
 //RED LINE         
         tokyo.addLine(line = "red");
-        ochanomizu = new Station("Ochanomizu", 35.6993854, 139.7652479, line);
+        ochanomizu = new Station("Ochanomizu", 35.6993854, 139.7652479, line, 349, 240);
         yoyogi.addLine(line);
         shinjuku.addLine(line);
 
