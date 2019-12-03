@@ -148,7 +148,12 @@ public class Metro {
                 add(new Edge(metro.getNode(iidabashi), metro.getNode(iichigaya), 1.5));
                 add(new Edge(metro.getNode(iichigaya), metro.getNode(shinanomachi), 2.1));
                 add(new Edge(metro.getNode(shinanomachi), metro.getNode(sendagaya), 0.7));
-                add(new Edge(metro.getNode(suidobashi), metro.getNode(ochanomizu), penalty));//WIKIPEDIA SAYS THAT
+                add(new Edge(metro.getNode(suidobashi), metro.getNode(ochanomizu), 0.8));
+                
+                
+                
+                
+                
 
             }
         };
@@ -222,6 +227,15 @@ public class Metro {
         f3.addEdge(aux);
         auxN.addEdge(aux);
         metro.addNode(f3);
+        
+        ////OCHANOMIZU STATION ON RED LINE
+        //CAMBIO DE LINEA RED TO YELLOW
+        Edge aux2 = new Edge(f2 = new Node(ochanomizu), auxN1 = metro.getNode(ochanomizu), penalty);
+        
+        //ADD EDGE TO OCHANOMIZU - FICTICIUS 2 
+        f2.addEdge(aux2);
+        auxN1.addEdge(aux2);
+                
 
         //AKIHABARA STATION ON GREEN LINE
         //CAMBIO DE LINEA GREEN TO YELLOW
@@ -229,11 +243,19 @@ public class Metro {
         //ADD EDGE TO AKIHABARA - FICTICIUS 1 
         f1.addEdge(aux);
         auxN.addEdge(aux);
-        //ADD EDGE TO AKIHABARA - FICTICIUS 1-SUIDOBASHI WITH REAL DISTANCE
-        Edge aux1 = new Edge(f1, auxN = metro.getNode(suidobashi), 1.5);
+        
+        //ADD EDGE TO AKIHABARA - FICTICIUS 1-FICTICIUS 2 -OCHANOMIZU WITH REAL DISTANCE
+        Edge aux1 = new Edge(f1, f2, 0.9);
         f1.addEdge(aux1);
-        auxN.addEdge(aux1);
+        f2.addEdge(aux1);
+        
+        aux = new Edge(f1, auxN = metro.getNode(suidobashi), 0.8);
+        //ADD EDGE TO AKIHABARA - FICTICIUS 1 
+        f1.addEdge(aux);
+        auxN.addEdge(aux);
+        
         metro.addNode(f1);
+        metro.addNode(f2);
 
         for (Node N : metro.getNodes()) {
             System.out.println(N.getStation().getName() + ":");
@@ -250,13 +272,5 @@ public class Metro {
 
     }
 
-   /* public static void main(String[] args) {
-        Metro T = new Metro();
-        T.createStations();
-        T.createGraph();
-        StarA A = new StarA();
-        A.starASearch(T.getMetro().getNode(T.ueno), T.getMetro().getNode(T.suidobashi));
-       
-    }*/
 
 }
