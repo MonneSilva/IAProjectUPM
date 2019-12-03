@@ -2,7 +2,7 @@ package Interface;
 import Graph.Node;
 import Metro.Metro;
 import Search.StarA;
-import java.awt.EventQueue;
+import java.awt.*;
 import javax.swing.JFrame;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
