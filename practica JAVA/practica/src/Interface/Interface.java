@@ -6,6 +6,7 @@ import java.awt.*;
 import javax.swing.JFrame;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.text.DecimalFormat;
 import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JComboBox;
@@ -224,6 +225,8 @@ public class Interface extends Metro{
                 int j=resultado.size();
                 for (int i=0;i<j;i++) {
                     N=resultado.pop();
+                	if(i==(j-1))
+                		distan=N.getG();
                     if (lastN != null) {
                         if (lastN.getStation().equals(N.getStation())) {
                             imp += "intercambio" + "\n";
@@ -231,7 +234,6 @@ public class Interface extends Metro{
                     }      
                     
                     imp += N.getStation().getName() + "\n";
-                    distan=distan+N.getG();
                         lastN = N;
                 }
                
@@ -244,7 +246,8 @@ public class Interface extends Metro{
                 int secs= (int)tempo-(minuts*60);
                 textArea.setText(imp);
                 textField.setText("minutes:"+minuts+";  seconds:"+secs);
-                dist.setText(distan+" km");
+                DecimalFormat df = new DecimalFormat("#.000");;
+                dist.setText( df.format(distan)+ " km");
                 botonCalcular.setEnabled(false);
                 botonReset.setEnabled(true);
                 
