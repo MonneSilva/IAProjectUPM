@@ -169,7 +169,7 @@ public class Interface extends Metro{
         scrollPane.setBounds(0, 20, 240, 217);
         panelListado.add(scrollPane);
 
-        JLabel lblEstacionesRecorrer1 = new JLabel("Lista de estaciones a recorrer:");
+        JLabel lblEstacionesRecorrer1 = new JLabel("Stations List:");
         lblEstacionesRecorrer1.setBounds(0, 0, 220, 15);
         panelListado.add(lblEstacionesRecorrer1);
 
@@ -184,7 +184,7 @@ public class Interface extends Metro{
         panelDistancia.add(dist);
         panelDistancia.setBackground(new Color(190, 190, 190));
 
-        JLabel lblDistancia = new JLabel("Distancia aproximada del viaje: ");
+        JLabel lblDistancia = new JLabel("Distance travel: ");
         lblDistancia.setBounds(0, 0, 191, 15);
         panelDistancia.add(lblDistancia);
 
@@ -199,15 +199,15 @@ public class Interface extends Metro{
         panelDuracion.add(textField);
         panelDuracion.setBackground(new Color(190, 190, 190));
 
-        JLabel lblTiempoEstimadoEn = new JLabel("Duración aproximada del viaje: ");
+        JLabel lblTiempoEstimadoEn = new JLabel("Time Travel:");
         lblTiempoEstimadoEn.setBounds(0, 0, 191, 15);
         panelDuracion.add(lblTiempoEstimadoEn);
 
-        final JButton botonReset = new JButton("Nueva consulta");
+        final JButton botonReset = new JButton("New Search");
         Metro.getContentPane().add(botonReset);
         botonReset.setEnabled(false);
         //boton calcular
-        final JButton botonCalcular = new JButton("Calcular");
+        final JButton botonCalcular = new JButton("Search");
         botonCalcular.setBounds(86, 165, 95, 30);
         Metro.getContentPane().add(botonCalcular);
         botonCalcular.addActionListener(new ActionListener() {
@@ -220,6 +220,7 @@ public class Interface extends Metro{
                 Graphics g = dibujo.getGraphics();
                 g.setColor(Color.BLUE);
                 Node N,lastN = null;
+                double distan=0;
                 int j=resultado.size();
                 for (int i=0;i<j;i++) {
                     N=resultado.pop();
@@ -227,16 +228,23 @@ public class Interface extends Metro{
                         if (lastN.getStation().equals(N.getStation())) {
                             imp += "intercambio" + "\n";
                         }
-                    }            
+                    }      
+                    
                     imp += N.getStation().getName() + "\n";
+                    distan=distan+N.getG();
                         lastN = N;
                 }
                
-                //FUNCTION TO FILL THE PIXEL
+                //FUNCTION TO FILL THE PIXEL kl
                 //g.fillRect(82, 42, 5, 5);
                 //}
+                double tempo=distan/35; //tiempo en horas
+                tempo=tempo*3600;
+                int minuts= (int)tempo/60;
+                int secs= (int)tempo-(minuts*60);
                 textArea.setText(imp);
-                
+                textField.setText("minutes:"+minuts+";  seconds:"+secs);
+                dist.setText(distan+" km");
                 botonCalcular.setEnabled(false);
                 botonReset.setEnabled(true);
                 
@@ -257,8 +265,7 @@ public class Interface extends Metro{
                 resultado = null;
                 textArea.setText(imp);
                 textField.setText(tiempo);
-                dist.setText(metros);
-                estRec.setText("");
+                dist.setText("");
                 dibujo.repaint();
                 botonReset.setEnabled(false);
                 botonCalcular.setEnabled(true);
