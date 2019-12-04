@@ -20,10 +20,6 @@ public class Node {
     public Edge currentE;
     double g,h;
     int x,y;
-    
-    //eventuell doch x und y hier abspeichern
-    //im konstruktor von station holen
-    //für interchange anderen konstruktor, in dem die pixel übergeben werden
 
     public double getCost() {
         return g+h;
