@@ -19,20 +19,31 @@ public class Node {
     private ArrayList<Edge> edges;
     public Edge currentE;
     double g,h;
+    int x,y;
     
+    //eventuell doch x und y hier abspeichern
+    //im konstruktor von station holen
+    //für interchange anderen konstruktor, in dem die pixel übergeben werden
 
     public double getCost() {
         return g+h;
     }
-
     
     public Node(Station station, ArrayList<Edge> edges) {
         this.station = station;
         this.edges = edges;
+        this.x = this.station.getX();
+        this.y = this.station.getY();
     }
     public Node(Station station) {
         this.station = station;
         this.edges = new ArrayList();
+        this.x = this.station.getX();
+        this.y = this.station.getY();
+    }
+    public void setPixels(int x, int y){
+        this.x = x;
+        this.y = y;
     }
 
     public Station getStation() {
@@ -65,7 +76,6 @@ public class Node {
     public void setH(double h) {
         this.h = h;
     }
- 
     
     public void addEdge(Edge edge) {
         if (edges == null) {
@@ -77,7 +87,13 @@ public class Node {
         for(Edge e:edge)
         edges.add(e);
     }
+
+    public int getXFromNode(){
+        return x;
+    }
+    public int getYFromNode(){
+        return y;
+    }
     
- 
 }
 

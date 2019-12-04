@@ -35,7 +35,7 @@ public class Station {
 		this.graphx = x;
 		this.graphy = y;
 	}
-         public Station(String name, double lat, double longi,String line) {
+    public Station(String name, double lat, double longi, String line) {
 		this.name = name;
 		this.latitude=lat;
 		this.longitude=longi;
