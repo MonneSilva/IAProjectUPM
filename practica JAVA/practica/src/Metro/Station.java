@@ -27,11 +27,11 @@ public class Station {
 	private int graphx, graphy;
                        
     //Simplex delacaration of station
-    public Station(String name, double lat, double longi,ArrayList<String> lines, int x, int y) {
+    public Station(String name, double lat, double longi,ArrayList<String> line, int x, int y) {
 		this.name = name;
 		this.latitude=lat;
 		this.longitude=longi;
-		this.lines=lines;
+		this.lines=line;
 		this.graphx = x;
 		this.graphy = y;
 	}

@@ -32,6 +32,7 @@ public class Interface extends Metro{
     public JPanel dibujo, dibujo2;
     public double minutos;
     public double segundos;
+    private Font font = new Font("Agency FB", Font.BOLD, 14);
     public String horario;
     public String tiempo;
     public String metros;
@@ -93,11 +94,13 @@ public class Interface extends Metro{
 
         //@SuppressWarnings({ "rawtypes", "unchecked", "static-access" })
         final JComboBox originStation = new JComboBox(metro.getStationsN().toArray());
+        originStation.setFont(font);
         originStation.setBounds(70, 0, 170, 30);
         panelOrigen.add(originStation);
 
         JLabel lblSeleccionLaEstacion = new JLabel("From:");
         lblSeleccionLaEstacion.setBounds(4, 7, 45, 15);
+        lblSeleccionLaEstacion.setFont(font);
         panelOrigen.add(lblSeleccionLaEstacion);
 
         //destino
@@ -116,11 +119,13 @@ public class Interface extends Metro{
         A.starASearch(T.getMetro().getNode(T.ueno), T.getMetro().getNode(T.suidobashi));*/
 
         final JComboBox detinyStation = new JComboBox(metro.getStationsN().toArray());
+        detinyStation.setFont(font);
         detinyStation.setBounds(70, 0, 170, 30);
         panelDestino.add(detinyStation);
 
         JLabel label = new JLabel("To:");
         label.setBounds(4, 7, 50, 15);
+        label.setFont(font);
         panelDestino.add(label);
 
         //Horas
@@ -165,7 +170,7 @@ public class Interface extends Metro{
         panelListado.setBackground(new Color(190, 190, 190));
         textArea = new JTextArea();
         textArea.setEditable(false);
-        textArea.setFont(new Font("Arial", Font.PLAIN, 12));
+        textArea.setFont(font);
         JScrollPane scrollPane = new JScrollPane(textArea);
         scrollPane.setBounds(0, 20, 240, 217);
         panelListado.add(scrollPane);
@@ -181,6 +186,8 @@ public class Interface extends Metro{
         panelDistancia.setLayout(null);
         dist = new JTextField();
         dist.setBounds(0, 18, 240, 25);
+        Font font = new Font("Agency FB", Font.BOLD, 14);
+        dist.setFont(font);
         dist.setEditable(false);
         panelDistancia.add(dist);
         panelDistancia.setBackground(new Color(190, 190, 190));
@@ -197,6 +204,7 @@ public class Interface extends Metro{
         textField = new JTextField();
         textField.setBounds(0, 18, 240, 25);
         textField.setEditable(false);
+        textField.setFont(font);
         panelDuracion.add(textField);
         panelDuracion.setBackground(new Color(190, 190, 190));
 
@@ -205,11 +213,13 @@ public class Interface extends Metro{
         panelDuracion.add(lblTiempoEstimadoEn);
 
         final JButton botonReset = new JButton("New Search");
+        botonReset.setFont(font);
         Metro.getContentPane().add(botonReset);
         botonReset.setEnabled(false);
         //boton calcular
         final JButton botonCalcular = new JButton("Search");
         botonCalcular.setBounds(86, 165, 95, 30);
+        botonCalcular.setFont(font);
         Metro.getContentPane().add(botonCalcular);
         botonCalcular.addActionListener(new ActionListener() {
             @SuppressWarnings("static-access")
@@ -219,12 +229,13 @@ public class Interface extends Metro{
                 stationT = detinyStation.getSelectedItem().toString();
                 resultado = StarA.Search(metro.getMetro().getNode(stationF), metro.getMetro().getNode(stationT));
                 Graphics g = dibujo.getGraphics();
-                g.setColor(Color.BLUE);
+                g.setColor(Color.YELLOW);
                 Node N,lastN = null;
                 double distan=0;
                 int j=resultado.size();
                 for (int i=0;i<j;i++) {
-                    N=resultado.pop();
+                	N=resultado.pop();
+                	g.fillRect(N.getXFromNode()+17, N.getYFromNode()-50, 10, 10);
                 	if(i==(j-1))
                 		distan=N.getG();
                     if (lastN != null) {

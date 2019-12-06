@@ -43,7 +43,8 @@ public class Metro {
     public void createStations() {
 
         //FIRST CREATE EACH STATION WHIT COORDANADES AND GRAPH COORDANADES*    *Optional
-        String line = "green";
+       ArrayList <String> line= new ArrayList<String>();
+       line.add("green");
         //GREEN LINE
         takadanobaba = new Station("Takadanobaba", 35.712932, 139.704455, line, 180, 163);
         mejiro = new Station("Mejiro", 35.7211714, 139.7065603, line, 213, 130);
@@ -75,21 +76,25 @@ public class Metro {
         shinjuku = new Station("Shinjuku", 35.6896067, 139.7005713, line, 175, 270);
         shinOkubo = new Station("Shin-Okubo", 35.7012459, 139.7002258, line, 175, 200);
         // YELLOW LINE
-        shinjuku.addLine(line = "yellow");
-        yoyogi.addLine(line);
+        line.clear();
+        line.add("yellow");
+        shinjuku.addLine("yellow");
+        yoyogi.addLine("yellow");
         sendagaya = new Station("Sendagaya", 35.6811956, 139.7112808, line, 197, 344);
         shinanomachi = new Station("Shinanomachi", 35.6800602, 139.7203199, line, 237, 344);
         yotsuya = new Station("Yotsuya", 35.6861525, 139.7302183, line, 260, 324);
         iichigaya = new Station("Ichigaya", 35.6910121, 139.7355674, line, 275, 308);
         iidabashi = new Station("Lidabashi", 35.7020837, 139.7450232, line, 291, 292);
         suidobashi = new Station("Suidobashi", 35.7020484, 139.7535016, line, 307, 277);
-        akihabara.addLine(line);
+        akihabara.addLine("yellow");
 
         // RED LINE
-        tokyo.addLine(line = "red");
+        line.clear();
+        line.add("red");
+        tokyo.addLine( "red");
         ochanomizu = new Station("Ochanomizu", 35.6993854, 139.7652479, line, 349, 240);
-        yoyogi.addLine(line);
-        shinjuku.addLine(line);
+        yoyogi.addLine("red");
+        shinjuku.addLine("red");
 
         Station[] stations = {shinOkubo, takadanobaba, mejiro, ikebukuro, otsuka, sugamo, komagome, tabata, nishiNippori, nippori,
             uguisudani, ueno, okachimachi, akihabara, kanda, tokyo, yurakucho, shimbashi, hamamatsucho, tamachi, shinagawa, osaki,
