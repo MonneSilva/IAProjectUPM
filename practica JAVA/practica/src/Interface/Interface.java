@@ -1,4 +1,5 @@
 package Interface;
+
 import Graph.Node;
 import Metro.Metro;
 import Search.StarA;
@@ -20,7 +21,7 @@ import java.awt.Graphics;
 import java.util.Stack;
 import javax.swing.JTextField;
 
-public class Interface extends Metro{
+public class Interface extends Metro {
 
     private Metro metro = new Metro();
     private JFrame Metro;
@@ -37,7 +38,7 @@ public class Interface extends Metro{
     public String tiempo;
     public String metros;
     public int modo = 0;
-    private JTextField textField, estRec, dist;
+    private JTextField textField, dist;
     public double distancia;
 
     public static void main(String[] args) {
@@ -85,14 +86,13 @@ public class Interface extends Metro{
         dibujo.setLocation(280, 17);
         Metro.getContentPane().add(dibujo);
 
-        //Origen
+        //FROM
         JPanel panelOrigen = new JPanel();
         panelOrigen.setBounds(20, 15, 240, 30);
         Metro.getContentPane().add(panelOrigen);
         panelOrigen.setBackground(new Color(190, 190, 190));
         panelOrigen.setLayout(null);
-
-        //@SuppressWarnings({ "rawtypes", "unchecked", "static-access" })
+        
         final JComboBox originStation = new JComboBox(metro.getStationsN().toArray());
         originStation.setFont(font);
         originStation.setBounds(70, 0, 170, 30);
@@ -103,66 +103,29 @@ public class Interface extends Metro{
         lblSeleccionLaEstacion.setFont(font);
         panelOrigen.add(lblSeleccionLaEstacion);
 
-        //destino
+        //TO
         JPanel panelDestino = new JPanel();
         panelDestino.setLayout(null);
         panelDestino.setBounds(20, 60, 240, 30);
         panelDestino.setBackground(new Color(190, 190, 190));
         Metro.getContentPane().add(panelDestino);
-
-        //@SuppressWarnings({ "rawtypes", "unchecked", "static-access" })
         Metro T = new Metro();
-        /* T.createStations();
-        T.createGraph();
-        
-        StarA A = new StarA();
-        A.starASearch(T.getMetro().getNode(T.ueno), T.getMetro().getNode(T.suidobashi));*/
-
         final JComboBox detinyStation = new JComboBox(metro.getStationsN().toArray());
         detinyStation.setFont(font);
         detinyStation.setBounds(70, 0, 170, 30);
         panelDestino.add(detinyStation);
-
         JLabel label = new JLabel("To:");
         label.setBounds(4, 7, 50, 15);
         label.setFont(font);
         panelDestino.add(label);
-
-        //Horas
+        //HOURS
         JPanel panelHoras = new JPanel();
         panelHoras.setBounds(20, 105, 240, 45);
         panelHoras.setBackground(new Color(190, 190, 190));
         Metro.getContentPane().add(panelHoras);
         panelHoras.setLayout(null);
-
-        /*JLabel lblSeleccionaLaHora = new JLabel("Hora salida:");
-		lblSeleccionaLaHora.setBounds(4, 7, 70, 15);
-		panelHoras.add(lblSeleccionaLaHora);
-		JLabel lblInfoHora = new JLabel("*:Hora punta. Menor tiempo espera");
-		lblInfoHora.setBounds(4, 30, 240, 15);
-		panelHoras.add(lblInfoHora);
-
-		@SuppressWarnings({ "unchecked", "rawtypes", "static-access" })
-		final JComboBox desplegableHora = new JComboBox(metro.);
-		desplegableHora.setBounds(140, 0, 100, 30);
-		panelHoras.add(desplegableHora);
-
-		//N� estaciones recorridas
-		JPanel panelRecorridas = new JPanel();
-		panelRecorridas.setBounds(20, 360, 240, 40);
-		panelRecorridas.setBackground(new Color(190,190,190));
-		Metro.getContentPane().add(panelRecorridas);
-		panelRecorridas.setLayout(null);
-		estRec = new JTextField();
-		estRec.setBounds(0, 18, 240, 25);
-		estRec.setEditable(false);
-		panelRecorridas.add(estRec);
-
-		JLabel numEstRec = new JLabel(":");
-		numEstRec.setBounds(0, 0, 197, 15);
-		panelRecorridas.add(numEstRec);
-         */
-        //Lista estaciones recorridas
+        
+        //TRAVEL STATIONS
         JPanel panelListado = new JPanel();
         panelListado.setBounds(20, 418, 240, 237);
         Metro.getContentPane().add(panelListado);
@@ -174,12 +137,11 @@ public class Interface extends Metro{
         JScrollPane scrollPane = new JScrollPane(textArea);
         scrollPane.setBounds(0, 20, 240, 217);
         panelListado.add(scrollPane);
-
         JLabel lblEstacionesRecorrer1 = new JLabel("Stations List:");
         lblEstacionesRecorrer1.setBounds(0, 0, 220, 15);
         panelListado.add(lblEstacionesRecorrer1);
-
-        //distancia
+        
+        //DISTANCE
         JPanel panelDistancia = new JPanel();
         panelDistancia.setBounds(20, 250, 240, 40);
         Metro.getContentPane().add(panelDistancia);
@@ -191,11 +153,9 @@ public class Interface extends Metro{
         dist.setEditable(false);
         panelDistancia.add(dist);
         panelDistancia.setBackground(new Color(190, 190, 190));
-
         JLabel lblDistancia = new JLabel("Distance travel: ");
         lblDistancia.setBounds(0, 0, 191, 15);
         panelDistancia.add(lblDistancia);
-
         //Duracion
         JPanel panelDuracion = new JPanel();
         panelDuracion.setBounds(20, 305, 240, 40);
@@ -211,7 +171,6 @@ public class Interface extends Metro{
         JLabel lblTiempoEstimadoEn = new JLabel("Time Travel:");
         lblTiempoEstimadoEn.setBounds(0, 0, 191, 15);
         panelDuracion.add(lblTiempoEstimadoEn);
-
         final JButton botonReset = new JButton("New Search");
         botonReset.setFont(font);
         Metro.getContentPane().add(botonReset);
@@ -224,44 +183,41 @@ public class Interface extends Metro{
         botonCalcular.addActionListener(new ActionListener() {
             @SuppressWarnings("static-access")
             public void actionPerformed(ActionEvent arg0) {
-
                 stationF = originStation.getSelectedItem().toString();
                 stationT = detinyStation.getSelectedItem().toString();
                 resultado = StarA.Search(metro.getMetro().getNode(stationF), metro.getMetro().getNode(stationT));
                 Graphics g = dibujo.getGraphics();
                 g.setColor(Color.YELLOW);
-                Node N,lastN = null;
-                double distan=0;
-                int j=resultado.size();
-                for (int i=0;i<j;i++) {
-                	N=resultado.pop();
-                	g.fillRect(N.getXFromNode(), N.getYFromNode(), 10, 10);
-                	if(i==(j-1))
-                		distan=N.getG();
+                Node N, lastN = null;
+                double distan = 0;
+                int j = resultado.size();
+                for (int i = 0; i < j; i++) {
+                    N = resultado.pop();
+                    g.fillOval(N.getXFromNode(), N.getYFromNode(), 10, 10);
+                    if (i == (j - 1)) {
+                        distan = N.getG();
+                    }
                     if (lastN != null) {
-                        if (lastN.getStation().equals(N.getStation())) {
-                            imp += "intercambio" + "\n";
+                        if (!lastN.getStation().equals(N.getStation())) {
+                            imp += N.getStation().getName() + "\n";
                         }
-                    }      
-                    
-                    imp += N.getStation().getName() + "\n";
-                        lastN = N;
+                    }else
+                    {
+                        imp += N.getStation()+ "\n";
+                    }
+                    lastN = N;
                 }
-               
-                //FUNCTION TO FILL THE PIXEL kl
-                //g.fillRect(82, 42, 5, 5);
-                //}
-                double tempo=distan/35; //tiempo en horas
-                tempo=tempo*3600;
-                int minuts= (int)tempo/60;
-                int secs= (int)tempo-(minuts*60);
+                double time = distan / 35; //tiempo en horas
+                time = time * 3600;
+                int minuts = (int) time / 60;
+                int secs = (int) time - (minuts * 60);
                 textArea.setText(imp);
-                textField.setText("minutes:"+minuts+";  seconds:"+secs);
+                textField.setText("minutes:" + minuts + ";  seconds:" + secs);
                 DecimalFormat df = new DecimalFormat("#.000");;
-                dist.setText( df.format(distan)+ " km");
+                dist.setText(df.format(distan) + " km");
                 botonCalcular.setEnabled(false);
                 botonReset.setEnabled(true);
-                
+
             }
         });
 
@@ -269,8 +225,6 @@ public class Interface extends Metro{
         botonReset.addActionListener(new ActionListener() {
             @SuppressWarnings("static-access")
             public void actionPerformed(ActionEvent arg0) {
-
-                //metro.limpiarVariables();
                 imp = "";
                 tiempo = "";
                 metros = "";
@@ -283,20 +237,10 @@ public class Interface extends Metro{
                 dibujo.repaint();
                 botonReset.setEnabled(false);
                 botonCalcular.setEnabled(true);
-
             }
         });
         botonReset.setBounds(86, 210, 115, 30);
         Metro.getContentPane().add(botonReset);
     }
 
-    public static String distanciaRedondeada(double distancia) {
-        double parteEntera, resultado;
-        resultado = distancia / 1000;
-        parteEntera = Math.floor(resultado);
-        resultado = (resultado - parteEntera) * Math.pow(10, 2);
-        resultado = Math.round(resultado);
-        //resultado=(resultado/Math.pow(10, 2))+parteEntera;
-        return (int) parteEntera + " kil�metros " + (int) ((resultado / Math.pow(10, 2)) * 1000) + " metros ";
-    }
 }

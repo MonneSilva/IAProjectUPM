@@ -170,10 +170,11 @@ public class Metro {
         }
 
 //INTERCHANGE STATIONS
-        Node f1, f2, f3, auxN, auxN1; //FICTIOUS AND AUXILIAR NODES
+//INTERCHANGE STATIONS
+        Node f1, f2, f3, auxN, auxN1; //FICTICIUS AND AUXILIAR NODES
 
         //TOKYO STATION ON GREEN LINE
-        //CHANGE FROM LINE GREEN TO RED
+        //CAMBIO DE LINEA GREEN TO RED
         Edge aux = new Edge(f1 = new Node(tokyo), auxN = metro.getNode(tokyo), penalty);
         //ADD EDGE TO TOKYO- FICTICIUS 1(TOKYO)
         f1.addEdge(aux);
@@ -189,11 +190,12 @@ public class Metro {
         //SHINJUKU STATION ON GREEN LINE
         //CAMBIO DE LINEA GREEN TO RED
         aux = new Edge(f1 = new Node(shinjuku), auxN = metro.getNode(shinjuku), penalty);
-        //add new pixels for shinjuku red
-        f1.setPixels(164, 195);
         //ADD EDGE TO SHINJUKU- FICTICIUS 1 
         f1.addEdge(aux);
         auxN.addEdge(aux);
+        //add new pixels for shinjuku red
+        f1.setPixels(164, 195);
+
         //ADD EDGE TO SHINJUKU- FICTICIUS 1-OCHANOMIZU WITH REAL DISTANCE
         aux = new Edge(f1, auxN1 = metro.getNode(ochanomizu), 1.5);
         f1.addEdge(aux);
@@ -203,18 +205,15 @@ public class Metro {
 
         //CAMBIO DE LINEA GREEN TO YELLOW
         aux = new Edge(f2 = new Node(shinjuku), auxN, penalty);
-        //add new pixels for shinjuku yellow
-        f2.setPixels(144, 195);
         //ADD EDGE TO SHINJUKU- FICTICIUS 2 
         f2.addEdge(aux);
+           f2.setPixels(144, 195);
         auxN.addEdge(aux);
         metro.addNode(f2);
 
         //YOYOGY STATION ON GREEN LINE
         //CAMBIO DE LINEA GREEN TO YELLOW
         aux = new Edge(f3 = new Node(yoyogi), auxN = metro.getNode(yoyogi), penalty);
-        //add pixels for yoyogy yellow
-        f3.setPixels(144, 218);
         //ADD EDGE TO SHINJUKU- FICTICIUS 3 
         f3.addEdge(aux);
         auxN.addEdge(aux);
@@ -238,10 +237,10 @@ public class Metro {
         ////OCHANOMIZU STATION ON RED LINE
         //CAMBIO DE LINEA RED TO YELLOW
         Edge aux2 = new Edge(f2 = new Node(ochanomizu), auxN1 = metro.getNode(ochanomizu), penalty);
-        //add pixels for ochanomizu yellow
-        f2.setPixels( 363,183);
+        
         //ADD EDGE TO OCHANOMIZU - FICTICIUS 2 
         f2.addEdge(aux2);
+         f2.setPixels( 363,183);
         auxN1.addEdge(aux2);
                 
 
@@ -264,7 +263,6 @@ public class Metro {
         
         metro.addNode(f1);
         metro.addNode(f2);
-
         for (Node N : metro.getNodes()) {
             System.out.println(N.getStation().getName() + ":");
             for (Edge E : N.getEdges()) {
