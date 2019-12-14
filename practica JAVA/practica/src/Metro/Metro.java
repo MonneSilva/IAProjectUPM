@@ -46,55 +46,56 @@ public class Metro {
        ArrayList <String> line= new ArrayList<String>();
        line.add("green");
         //GREEN LINE
-        takadanobaba = new Station("Takadanobaba", 35.712932, 139.704455, line, 180, 163);
-        mejiro = new Station("Mejiro", 35.7211714, 139.7065603, line, 213, 130);
-        ikebukuro = new Station("Ikebukuro", 35.7295028, 139.7109001, line, 268, 97);
-        otsuka = new Station("Otsuka", 35.7318309, 139.7281112, line, 329, 97);
-        sugamo = new Station("Sugamo", 35.7334192, 139.7392848, line, 360, 97);
-        komagome = new Station("Komagome", 35.7365665, 139.7470098, line, 392, 97);
-        tabata = new Station("Tabata", 35.7381581, 139.7608154, line, 430, 112);
-        nishiNippori = new Station("Nishi-Nippori", 35.7320057, 139.7668856, line, 449, 130);
-        nippori = new Station("Nippori", 35.7281578, 139.7706414, line, 454, 159);
-        uguisudani = new Station("Uguisudani", 35.7214573, 139.7780133, line, 453, 183);
-        ueno = new Station("Ueno", 35.7141672, 139.7774091, line, 453, 207);
-        okachimachi = new Station("Okachimachi", 35.7075185, 139.7748564, line, 453, 234);
-        akihabara = new Station("Akihabara", 35.698383, 139.7730717, line, 453, 259);
-        kanda = new Station("Kanda", 35.6918216, 139.7709318, line, 453, 298);
-        tokyo = new Station("Tokyo", 35.6812362, 139.7649308, line, 453, 335);
-        yurakucho = new Station("Yurakucho", 35.6749187, 139.7628199, line, 450, 368);
-        shimbashi = new Station("Shimbashi", 35.666379, 139.7583398, line, 428, 390);
-        hamamatsucho = new Station("Hamamatsucho", 35.6553809, 139.7571289, line, 401, 415);
-        tamachi = new Station("Tamachi", 35.6457361, 139.7475624, line, 373, 444);
-        shinagawa = new Station("Shinagawa", 35.6284713, 139.7387597, line, 343, 475);
-        osaki = new Station("Osaki", 35.6198513, 139.7281892, line, 289, 482);
-        gotanda = new Station("Gotanda", 35.6261591, 139.7236022, line, 253, 482);
-        merugo = new Station("Meguro", 35.6340929, 139.7158331, line, 222, 482);
-        ebisu = new Station("Ebisu", 35.6467139, 139.7100777, line, 175, 460);
-        shibuya = new Station("Shibuya", 35.6580339, 139.7016358, line, 175, 411);
-        harajuku = new Station("Harajuku", 35.6702285, 139.7026976, line, 175, 369);
-        yoyogi = new Station("Yoyogi", 35.683033, 139.7020555, line, 175, 304);
-        shinjuku = new Station("Shinjuku", 35.6896067, 139.7005713, line, 175, 270);
-        shinOkubo = new Station("Shin-Okubo", 35.7012459, 139.7002258, line, 175, 200);
+        takadanobaba = new Station("Takadanobaba", 35.712932, 139.704455, line, 197, 113);
+        mejiro = new Station("Mejiro", 35.7211714, 139.7065603, line, 230, 90);
+        ikebukuro = new Station("Ikebukuro", 35.7295028, 139.7109001, line, 290, 67);
+        otsuka = new Station("Otsuka", 35.7318309, 139.7281112, line, 357, 67);
+        sugamo = new Station("Sugamo", 35.7334192, 139.7392848, line, 395, 67);
+        komagome = new Station("Komagome", 35.7365665, 139.7470098, line, 435, 67);
+        tabata = new Station("Tabata", 35.7381581, 139.7608154, line, 475, 80);
+        nishiNippori = new Station("Nishi-Nippori", 35.7320057, 139.7668856, line, 494, 95);
+        nippori = new Station("Nippori", 35.7281578, 139.7706414, line, 503, 110);
+        uguisudani = new Station("Uguisudani", 35.7214573, 139.7780133, line, 503, 128);
+        ueno = new Station("Ueno", 35.7141672, 139.7774091, line, 503, 150);
+        okachimachi = new Station("Okachimachi", 35.7075185, 139.7748564, line, 503,167);
+        akihabara = new Station("Akihabara", 35.698383, 139.7730717, line, 503, 183);
+        kanda = new Station("Kanda", 35.6918216, 139.7709318, line, 503, 218);
+        tokyo = new Station("Tokyo", 35.6812362, 139.7649308, line, 503, 243);
+        yurakucho = new Station("Yurakucho", 35.6749187, 139.7628199, line, 495, 272);
+        shimbashi = new Station("Shimbashi", 35.666379, 139.7583398, line, 473, 289);
+        hamamatsucho = new Station("Hamamatsucho", 35.6553809, 139.7571289, line,443, 311);
+        tamachi = new Station("Tamachi", 35.6457361, 139.7475624, line, 415, 332);
+        shinagawa = new Station("Shinagawa", 35.6284713, 139.7387597, line, 379, 350);
+        osaki = new Station("Osaki", 35.6198513, 139.7281892, line, 318, 357);
+        gotanda = new Station("Gotanda", 35.6261591, 139.7236022, line, 277,  357);
+        merugo = new Station("Meguro", 35.6340929, 139.7158331, line, 238, 357);
+        ebisu = new Station("Ebisu", 35.6467139, 139.7100777, line, 192, 343);
+        shibuya = new Station("Shibuya", 35.6580339, 139.7016358, line, 192, 299);
+        harajuku = new Station("Harajuku", 35.6702285, 139.7026976, line, 192, 272);
+        yoyogi = new Station("Yoyogi", 35.683033, 139.7020555, line, 192, 218);
+        shinjuku = new Station("Shinjuku", 35.6896067, 139.7005713, line, 192, 195);
+        shinOkubo = new Station("Shin-Okubo", 35.7012459, 139.7002258, line, 192, 150);
         // YELLOW LINE
         line.clear();
         line.add("yellow");
         shinjuku.addLine("yellow");
         yoyogi.addLine("yellow");
-        sendagaya = new Station("Sendagaya", 35.6811956, 139.7112808, line, 197, 344);
-        shinanomachi = new Station("Shinanomachi", 35.6800602, 139.7203199, line, 237, 344);
-        yotsuya = new Station("Yotsuya", 35.6861525, 139.7302183, line, 260, 324);
-        iichigaya = new Station("Ichigaya", 35.6910121, 139.7355674, line, 275, 308);
-        iidabashi = new Station("Lidabashi", 35.7020837, 139.7450232, line, 291, 292);
-        suidobashi = new Station("Suidobashi", 35.7020484, 139.7535016, line, 307, 277);
+        sendagaya = new Station("Sendagaya", 35.6811956, 139.7112808, line, 215, 250);
+        shinanomachi = new Station("Shinanomachi", 35.6800602, 139.7203199, line, 260, 250);
+        yotsuya = new Station("Yotsuya", 35.6861525, 139.7302183, line, 300,235);
+        iichigaya = new Station("Ichigaya", 35.6910121, 139.7355674, line, 319,219);
+        iidabashi = new Station("Lidabashi", 35.7020837, 139.7450232, line,340,202 );
+        suidobashi = new Station("Suidobashi", 35.7020484, 139.7535016, line, 365,188);
         akihabara.addLine("yellow");
 
         // RED LINE
         line.clear();
         line.add("red");
         tokyo.addLine( "red");
-        ochanomizu = new Station("Ochanomizu", 35.6993854, 139.7652479, line, 349, 240);
+        ochanomizu = new Station("Ochanomizu", 35.6993854, 139.7652479, line, 388,173);
         yoyogi.addLine("red");
         shinjuku.addLine("red");
+       
 
         Station[] stations = {shinOkubo, takadanobaba, mejiro, ikebukuro, otsuka, sugamo, komagome, tabata, nishiNippori, nippori,
             uguisudani, ueno, okachimachi, akihabara, kanda, tokyo, yurakucho, shimbashi, hamamatsucho, tamachi, shinagawa, osaki,
@@ -188,7 +189,7 @@ public class Metro {
         //CAMBIO DE LINEA GREEN TO RED
         aux = new Edge(f1 = new Node(shinjuku), auxN = metro.getNode(shinjuku), penalty);
         //add new pixels for shinjuku red
-        f1.setPixels(154, 270);
+        f1.setPixels(164, 195);
         //ADD EDGE TO SHINJUKU- FICTICIUS 1 
         f1.addEdge(aux);
         auxN.addEdge(aux);
@@ -202,7 +203,7 @@ public class Metro {
         //CAMBIO DE LINEA GREEN TO YELLOW
         aux = new Edge(f2 = new Node(shinjuku), auxN, penalty);
         //add new pixels for shinjuku yellow
-        f2.setPixels(135, 270);
+        f2.setPixels(144, 195);
         //ADD EDGE TO SHINJUKU- FICTICIUS 2 
         f2.addEdge(aux);
         auxN.addEdge(aux);
@@ -212,7 +213,7 @@ public class Metro {
         //CAMBIO DE LINEA GREEN TO YELLOW
         aux = new Edge(f3 = new Node(yoyogi), auxN = metro.getNode(yoyogi), penalty);
         //add pixels for yoyogy yellow
-        f3.setPixels(135, 304);
+        f3.setPixels(144, 218);
         //ADD EDGE TO SHINJUKU- FICTICIUS 3 
         f3.addEdge(aux);
         auxN.addEdge(aux);
@@ -237,7 +238,7 @@ public class Metro {
         //CAMBIO DE LINEA RED TO YELLOW
         Edge aux2 = new Edge(f2 = new Node(ochanomizu), auxN1 = metro.getNode(ochanomizu), penalty);
         //add pixels for ochanomizu yellow
-        f2.setPixels(333, 259);
+        f2.setPixels( 363,183);
         //ADD EDGE TO OCHANOMIZU - FICTICIUS 2 
         f2.addEdge(aux2);
         auxN1.addEdge(aux2);

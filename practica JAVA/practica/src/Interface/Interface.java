@@ -235,7 +235,7 @@ public class Interface extends Metro{
                 int j=resultado.size();
                 for (int i=0;i<j;i++) {
                 	N=resultado.pop();
-                	g.fillRect(N.getXFromNode()+17, N.getYFromNode()-50, 10, 10);
+                	g.fillRect(N.getXFromNode(), N.getYFromNode(), 10, 10);
                 	if(i==(j-1))
                 		distan=N.getG();
                     if (lastN != null) {
