@@ -152,8 +152,9 @@ public class Metro {
                 //Yellow
                 add(new Edge(metro.getNode(suidobashi), metro.getNode(iidabashi), 0.9));
                 add(new Edge(metro.getNode(iidabashi), metro.getNode(iichigaya), 1.5));
-                add(new Edge(metro.getNode(iichigaya), metro.getNode(shinanomachi), 2.1));
+                add(new Edge(metro.getNode(iichigaya), metro.getNode(yotsuya), 1.1));
                 add(new Edge(metro.getNode(shinanomachi), metro.getNode(sendagaya), 0.7));
+                add(new Edge(metro.getNode(shinanomachi), metro.getNode(yotsuya), 0.8));
                 add(new Edge(metro.getNode(suidobashi), metro.getNode(ochanomizu), 0.8));
             }
         };
