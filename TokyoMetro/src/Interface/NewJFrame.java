@@ -37,12 +37,12 @@ public class NewJFrame extends javax.swing.JFrame {
     public NewJFrame() {
         Tokyo = new Metro();
         Tokyo.createStations(); 
-        dibujo = new Map();
+        /*dibujo = new Map();
         dibujo.repaint(100, 100, 15, 15);
-        dibujo.setSize(707, 512);
+        dibujo.setSize(707, 512);*/
       
         initComponents();
-        this.jPanel2.add(dibujo);
+       // this.jPanel2.add(dibujo);
         /*this.setIconImage(new ImageIcon(getClass().getResource("../resources/FIM.gif")).getImage());
         this.setTitle("Tokyo RP Metro");
         this.setResizable(false);*/
@@ -72,7 +72,7 @@ public class NewJFrame extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList<>();
         jLabel5 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
+        jPanel2 = new Map();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -217,7 +217,7 @@ public class NewJFrame extends javax.swing.JFrame {
         stationF = this.jComboBox1.getSelectedItem().toString();
         stationT = this.jComboBox2.getSelectedItem().toString();
         resultado = StarA.Search(Tokyo.getMetro().getNode(stationF), Tokyo.getMetro().getNode(stationT));
-        Graphics g = dibujo.getGraphics();
+        Graphics g = this.jPanel2.getGraphics();
         g.setColor(Color.YELLOW);
         Node N, lastN = null;
         double distan = 0;
@@ -263,7 +263,7 @@ public class NewJFrame extends javax.swing.JFrame {
         listModel.removeAllElements();
         this.jTextField1.setText(tiempo);
         this.jTextField2.setText("");
-        dibujo.repaint();
+        this.jPanel2.repaint();
         this.jButton1.setEnabled(true);
 
 
@@ -278,7 +278,7 @@ public class NewJFrame extends javax.swing.JFrame {
         listModel.removeAllElements();
         this.jTextField1.setText(tiempo);
         this.jTextField2.setText("");
-       dibujo.repaint();
+       this.jPanel2.repaint();
         this.jButton1.setEnabled(true);
     }//GEN-LAST:event_jComboBox2ActionPerformed
 

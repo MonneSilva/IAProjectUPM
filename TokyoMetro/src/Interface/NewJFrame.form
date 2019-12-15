@@ -203,6 +203,9 @@
       </SubComponents>
     </Container>
     <Container class="javax.swing.JPanel" name="jPanel2">
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new Map()"/>
+      </AuxValues>
 
       <Layout>
         <DimensionLayout dim="0">
