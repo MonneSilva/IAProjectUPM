@@ -15,13 +15,14 @@ import java.util.ArrayList;
 import java.util.Stack;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 /**
  *
  * @author monts
  */
-public class NewJFrame extends javax.swing.JFrame {
+public class LiteInterface extends javax.swing.JFrame {
 
     final Metro Tokyo;
     public ArrayList<String> StationsFinal;
@@ -34,19 +35,12 @@ public class NewJFrame extends javax.swing.JFrame {
     /**
      * Creates new form NewJFrame
      */
-    public NewJFrame() {
+    public LiteInterface() {
         Tokyo = new Metro();
         Tokyo.createStations(); 
-        /*dibujo = new Map();
-        dibujo.repaint(100, 100, 15, 15);
-        dibujo.setSize(707, 512);*/
-      
+  
         initComponents();
-       // this.jPanel2.add(dibujo);
-        /*this.setIconImage(new ImageIcon(getClass().getResource("../resources/FIM.gif")).getImage());
-        this.setTitle("Tokyo RP Metro");
-        this.setResizable(false);*/
-
+      
     }
 
     /**
@@ -72,9 +66,9 @@ public class NewJFrame extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         jList1 = new javax.swing.JList<>();
         jLabel5 = new javax.swing.JLabel();
-        jPanel2 = new Map();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Tokyo RP Metro");
 
         jLabel1.setText("From:");
 
@@ -173,17 +167,6 @@ public class NewJFrame extends javax.swing.JFrame {
                 .addGap(38, 38, 38))
         );
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 408, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 460, Short.MAX_VALUE)
-        );
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -191,19 +174,13 @@ public class NewJFrame extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -217,15 +194,13 @@ public class NewJFrame extends javax.swing.JFrame {
         stationF = this.jComboBox1.getSelectedItem().toString();
         stationT = this.jComboBox2.getSelectedItem().toString();
         resultado = StarA.Search(Tokyo.getMetro().getNode(stationF), Tokyo.getMetro().getNode(stationT));
-        Graphics g = this.jPanel2.getGraphics();
-        g.setColor(Color.YELLOW);
+       
         Node N, lastN = null;
         double distan = 0;
         int j = resultado.size();
 
         for (int i = 0; i < j; i++) {
             N = resultado.pop();
-            g.fillOval(N.getXFromNode(), N.getYFromNode(), 10, 10);
             if (i == (j - 1)) {
                 distan = N.getG();
             }
@@ -263,7 +238,7 @@ public class NewJFrame extends javax.swing.JFrame {
         listModel.removeAllElements();
         this.jTextField1.setText(tiempo);
         this.jTextField2.setText("");
-        this.jPanel2.repaint();
+       
         this.jButton1.setEnabled(true);
 
 
@@ -278,7 +253,6 @@ public class NewJFrame extends javax.swing.JFrame {
         listModel.removeAllElements();
         this.jTextField1.setText(tiempo);
         this.jTextField2.setText("");
-       this.jPanel2.repaint();
         this.jButton1.setEnabled(true);
     }//GEN-LAST:event_jComboBox2ActionPerformed
 
@@ -303,20 +277,21 @@ public class NewJFrame extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LiteInterface.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LiteInterface.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LiteInterface.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(LiteInterface.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new NewJFrame().setVisible(true);
+                new LiteInterface().setVisible(true);
             }
         });
     }
@@ -332,7 +307,6 @@ public class NewJFrame extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JList<String> jList1;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTextField jTextField1;

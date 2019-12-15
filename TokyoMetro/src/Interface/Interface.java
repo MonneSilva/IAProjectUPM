@@ -80,14 +80,7 @@ public class Interface extends Metro {
         Metro.setResizable(false);
         Metro.setIconImage(new ImageIcon(getClass().getResource("../resources/FIM.gif")).getImage());
 
-        //MAP
-        dibujo = new Map();
-        dibujo.setBackground(Color.BLACK);
-        dibujo.repaint(100, 100, 15, 15);
-        dibujo.setSize(707, 512);
-        dibujo.setLocation(280, 17);
-        Metro.getContentPane().add(dibujo);
-
+       
         //FROM
         JPanel panelOrigen = new JPanel();
         panelOrigen.setBounds(20, 15, 240, 30);
@@ -104,23 +97,7 @@ public class Interface extends Metro {
         lblSeleccionLaEstacion.setBounds(4, 7, 45, 15);
         lblSeleccionLaEstacion.setFont(font);
         panelOrigen.add(lblSeleccionLaEstacion);
-        originStation.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                imp = "";
-                tiempo = "";
-                metros = "";
-                stationF = null;
-                stationT = null;
-                resultado = null;
-                textField.setText(tiempo);           
-                listModel.removeAllElements();
-                dist.setText("");
-                dibujo.repaint();
-                  botonCalcular.setEnabled(true);
-
-            }
-        });
-
+        
         //TO
         JPanel panelDestino = new JPanel();
         panelDestino.setLayout(null);
@@ -135,23 +112,7 @@ public class Interface extends Metro {
         JLabel label = new JLabel("To:");
         label.setBounds(4, 7, 50, 15);
         label.setFont(font);
-        panelDestino.add(label);
-        detinyStation.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                imp = "";
-                tiempo = "";
-                metros = "";
-                stationF = null;
-                stationT = null;
-                resultado = null;
-                listModel.removeAllElements();
-                textField.setText(tiempo);
-                dist.setText("");
-                dibujo.repaint();
-                botonCalcular.setEnabled(true);
-
-            }
-        });
+        panelDestino.add(label);   
         //HOURS
         JPanel panelHoras = new JPanel();
         panelHoras.setBounds(20, 105, 240, 45);
@@ -214,6 +175,48 @@ public class Interface extends Metro {
         botonCalcular.setBounds(86, 100, 95, 30);
         botonCalcular.setFont(font);
         Metro.getContentPane().add(botonCalcular);
+
+        
+        //MAP
+        dibujo = new Map();
+        dibujo.setBackground(Color.BLACK);
+        dibujo.repaint(100, 100, 15, 15);
+        dibujo.setSize(707, 512);
+        dibujo.setLocation(280, 17);
+        Metro.getContentPane().add(dibujo);
+
+        originStation.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                imp = "";
+                tiempo = "";
+                metros = "";
+                stationF = null;
+                stationT = null;
+                resultado = null;
+                textField.setText(tiempo);           
+                listModel.removeAllElements();
+                dist.setText("");
+                dibujo.repaint();
+                  botonCalcular.setEnabled(true);
+
+            }
+        });
+        detinyStation.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                imp = "";
+                tiempo = "";
+                metros = "";
+                stationF = null;
+                stationT = null;
+                resultado = null;
+                listModel.removeAllElements();
+                textField.setText(tiempo);
+                dist.setText("");
+                dibujo.repaint();
+                botonCalcular.setEnabled(true);
+
+            }
+        });
         botonCalcular.addActionListener(new ActionListener() {
             @SuppressWarnings("static-access")
             public void actionPerformed(ActionEvent arg0) {
